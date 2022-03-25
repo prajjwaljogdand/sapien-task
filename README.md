@@ -1,7 +1,7 @@
 # coding-challenege
 ReactJS-Coding Challenege
 
-************************************************************** DO NOT PUSH CHANGES TO THIS REPOSITORY*************************************************************************
+******************************************** DO NOT PUSH CHANGES TO THIS REPOSITORY**************************************
 
 
 You must have received the Coding Challenege details via mail
