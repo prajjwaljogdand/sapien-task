@@ -1,0 +1,11 @@
+.kebab {
+  cursor: pointer;
+}
+
+.justify-content-md-right {
+  justify-content : right !important;
+}
+
+.item {
+  padding: 0.2em;
+}

@@ -1,5 +1,6 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import Routes from "./Routes";
+import { ToastProvider } from "react-toast-notifications";
 
 const client = new ApolloClient({
   uri: `${process.env.REACT_APP_URL}/graphql`,
@@ -9,7 +10,9 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-        <Routes/>
+      <ToastProvider>
+        <Routes />
+      </ToastProvider>
     </ApolloProvider>
   );
 }

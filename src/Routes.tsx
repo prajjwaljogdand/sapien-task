@@ -7,6 +7,7 @@ import {
      useLocation,
 } from "react-router-dom";
 import Layout from "./components/layout";
+import MainLobby from "./pages/dashboard";
 
 const HomePage = React.lazy(() => import("./pages/home"));
 
@@ -29,8 +30,9 @@ export default function Routes() {
                <Layout>
                     <Suspense fallback={<code>Loading...</code>}>
                          <Switch>
-                              <Redirect exact from="/" to="/home" />
+                              <Redirect exact from="/" to="/dashboard" />
                               <Route path="/home" component={HomePage} />
+                              <Route path="/dashboard"  component={MainLobby}/>
                               <Route path="*" component={NoMatch} />
                          </Switch>
                     </Suspense>

@@ -1,0 +1,5078 @@
+# The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+scalar JSON
+
+# A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+scalar DateTime
+
+# A time string with format HH:mm:ss.SSS
+scalar Time
+
+# A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+scalar Date
+
+# The `Upload` scalar type represents a file upload.
+scalar Upload
+
+type Pagination {
+  total: Int!
+  page: Int!
+  pageSize: Int!
+  pageCount: Int!
+}
+
+type ResponseCollectionMeta {
+  pagination: Pagination!
+}
+
+enum PublicationState {
+  LIVE
+  PREVIEW
+}
+
+input IDFilterInput {
+  and: [ID]
+  or: [ID]
+  not: IDFilterInput
+  eq: ID
+  ne: ID
+  startsWith: ID
+  endsWith: ID
+  contains: ID
+  notContains: ID
+  containsi: ID
+  notContainsi: ID
+  gt: ID
+  gte: ID
+  lt: ID
+  lte: ID
+  null: Boolean
+  notNull: Boolean
+  in: [ID]
+  notIn: [ID]
+  between: [ID]
+}
+
+input BooleanFilterInput {
+  and: [Boolean]
+  or: [Boolean]
+  not: BooleanFilterInput
+  eq: Boolean
+  ne: Boolean
+  startsWith: Boolean
+  endsWith: Boolean
+  contains: Boolean
+  notContains: Boolean
+  containsi: Boolean
+  notContainsi: Boolean
+  gt: Boolean
+  gte: Boolean
+  lt: Boolean
+  lte: Boolean
+  null: Boolean
+  notNull: Boolean
+  in: [Boolean]
+  notIn: [Boolean]
+  between: [Boolean]
+}
+
+input StringFilterInput {
+  and: [String]
+  or: [String]
+  not: StringFilterInput
+  eq: String
+  ne: String
+  startsWith: String
+  endsWith: String
+  contains: String
+  notContains: String
+  containsi: String
+  notContainsi: String
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  null: Boolean
+  notNull: Boolean
+  in: [String]
+  notIn: [String]
+  between: [String]
+}
+
+input IntFilterInput {
+  and: [Int]
+  or: [Int]
+  not: IntFilterInput
+  eq: Int
+  ne: Int
+  startsWith: Int
+  endsWith: Int
+  contains: Int
+  notContains: Int
+  containsi: Int
+  notContainsi: Int
+  gt: Int
+  gte: Int
+  lt: Int
+  lte: Int
+  null: Boolean
+  notNull: Boolean
+  in: [Int]
+  notIn: [Int]
+  between: [Int]
+}
+
+input FloatFilterInput {
+  and: [Float]
+  or: [Float]
+  not: FloatFilterInput
+  eq: Float
+  ne: Float
+  startsWith: Float
+  endsWith: Float
+  contains: Float
+  notContains: Float
+  containsi: Float
+  notContainsi: Float
+  gt: Float
+  gte: Float
+  lt: Float
+  lte: Float
+  null: Boolean
+  notNull: Boolean
+  in: [Float]
+  notIn: [Float]
+  between: [Float]
+}
+
+input DateFilterInput {
+  and: [Date]
+  or: [Date]
+  not: DateFilterInput
+  eq: Date
+  ne: Date
+  startsWith: Date
+  endsWith: Date
+  contains: Date
+  notContains: Date
+  containsi: Date
+  notContainsi: Date
+  gt: Date
+  gte: Date
+  lt: Date
+  lte: Date
+  null: Boolean
+  notNull: Boolean
+  in: [Date]
+  notIn: [Date]
+  between: [Date]
+}
+
+input TimeFilterInput {
+  and: [Time]
+  or: [Time]
+  not: TimeFilterInput
+  eq: Time
+  ne: Time
+  startsWith: Time
+  endsWith: Time
+  contains: Time
+  notContains: Time
+  containsi: Time
+  notContainsi: Time
+  gt: Time
+  gte: Time
+  lt: Time
+  lte: Time
+  null: Boolean
+  notNull: Boolean
+  in: [Time]
+  notIn: [Time]
+  between: [Time]
+}
+
+input DateTimeFilterInput {
+  and: [DateTime]
+  or: [DateTime]
+  not: DateTimeFilterInput
+  eq: DateTime
+  ne: DateTime
+  startsWith: DateTime
+  endsWith: DateTime
+  contains: DateTime
+  notContains: DateTime
+  containsi: DateTime
+  notContainsi: DateTime
+  gt: DateTime
+  gte: DateTime
+  lt: DateTime
+  lte: DateTime
+  null: Boolean
+  notNull: Boolean
+  in: [DateTime]
+  notIn: [DateTime]
+  between: [DateTime]
+}
+
+input JSONFilterInput {
+  and: [JSON]
+  or: [JSON]
+  not: JSONFilterInput
+  eq: JSON
+  ne: JSON
+  startsWith: JSON
+  endsWith: JSON
+  contains: JSON
+  notContains: JSON
+  containsi: JSON
+  notContainsi: JSON
+  gt: JSON
+  gte: JSON
+  lt: JSON
+  lte: JSON
+  null: Boolean
+  notNull: Boolean
+  in: [JSON]
+  notIn: [JSON]
+  between: [JSON]
+}
+
+input ComponentWhyHowFiltersInput {
+  and: [ComponentWhyHowFiltersInput]
+  or: [ComponentWhyHowFiltersInput]
+  not: ComponentWhyHowFiltersInput
+}
+
+input ComponentWhyHowInput {
+  id: ID
+}
+
+type ComponentWhyHow {
+  id: ID!
+}
+
+input UploadFileFiltersInput {
+  id: IDFilterInput
+  name: StringFilterInput
+  alternativeText: StringFilterInput
+  caption: StringFilterInput
+  width: IntFilterInput
+  height: IntFilterInput
+  formats: JSONFilterInput
+  hash: StringFilterInput
+  ext: StringFilterInput
+  mime: StringFilterInput
+  size: FloatFilterInput
+  url: StringFilterInput
+  previewUrl: StringFilterInput
+  provider: StringFilterInput
+  provider_metadata: JSONFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [UploadFileFiltersInput]
+  or: [UploadFileFiltersInput]
+  not: UploadFileFiltersInput
+}
+
+input UploadFileInput {
+  name: String
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  previewUrl: String
+  provider: String
+  provider_metadata: JSON
+}
+
+type UploadFile {
+  name: String!
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String!
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  related: [GenericMorph]
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type UploadFileEntity {
+  id: ID
+  attributes: UploadFile
+}
+
+type UploadFileEntityResponse {
+  data: UploadFileEntity
+}
+
+type UploadFileEntityResponseCollection {
+  data: [UploadFileEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input I18NLocaleFiltersInput {
+  id: IDFilterInput
+  name: StringFilterInput
+  code: StringFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [I18NLocaleFiltersInput]
+  or: [I18NLocaleFiltersInput]
+  not: I18NLocaleFiltersInput
+}
+
+type I18NLocale {
+  name: String
+  code: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type I18NLocaleEntity {
+  id: ID
+  attributes: I18NLocale
+}
+
+type I18NLocaleEntityResponse {
+  data: I18NLocaleEntity
+}
+
+type I18NLocaleEntityResponseCollection {
+  data: [I18NLocaleEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input UsersPermissionsPermissionFiltersInput {
+  id: IDFilterInput
+  action: StringFilterInput
+  role: UsersPermissionsRoleFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [UsersPermissionsPermissionFiltersInput]
+  or: [UsersPermissionsPermissionFiltersInput]
+  not: UsersPermissionsPermissionFiltersInput
+}
+
+type UsersPermissionsPermission {
+  action: String!
+  role: UsersPermissionsRoleEntityResponse
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type UsersPermissionsPermissionEntity {
+  id: ID
+  attributes: UsersPermissionsPermission
+}
+
+type UsersPermissionsPermissionRelationResponseCollection {
+  data: [UsersPermissionsPermissionEntity!]!
+}
+
+input UsersPermissionsRoleFiltersInput {
+  id: IDFilterInput
+  name: StringFilterInput
+  description: StringFilterInput
+  type: StringFilterInput
+  permissions: UsersPermissionsPermissionFiltersInput
+  users: UsersPermissionsUserFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [UsersPermissionsRoleFiltersInput]
+  or: [UsersPermissionsRoleFiltersInput]
+  not: UsersPermissionsRoleFiltersInput
+}
+
+input UsersPermissionsRoleInput {
+  name: String
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+}
+
+type UsersPermissionsRole {
+  name: String!
+  description: String
+  type: String
+  permissions(
+    filters: UsersPermissionsPermissionFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): UsersPermissionsPermissionRelationResponseCollection
+  users(
+    filters: UsersPermissionsUserFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): UsersPermissionsUserRelationResponseCollection
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type UsersPermissionsRoleEntity {
+  id: ID
+  attributes: UsersPermissionsRole
+}
+
+type UsersPermissionsRoleEntityResponse {
+  data: UsersPermissionsRoleEntity
+}
+
+type UsersPermissionsRoleEntityResponseCollection {
+  data: [UsersPermissionsRoleEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+enum ENUM_USERSPERMISSIONSUSER_GENDER {
+  Male
+  Female
+  Other
+  Prefer_not_say
+}
+
+input UsersPermissionsUserFiltersInput {
+  id: IDFilterInput
+  username: StringFilterInput
+  email: StringFilterInput
+  provider: StringFilterInput
+  password: StringFilterInput
+  resetPasswordToken: StringFilterInput
+  confirmationToken: StringFilterInput
+  confirmed: BooleanFilterInput
+  blocked: BooleanFilterInput
+  role: UsersPermissionsRoleFiltersInput
+  user_package_suggestions: UserPackageSuggestionFiltersInput
+  fitnesspackages: FitnesspackageFiltersInput
+  bank_details: BankDetailFiltersInput
+  changemaker_holidays: ChangemakerHolidayFiltersInput
+  exercises: ExerciseFiltersInput
+  feedback_comments: FeedbackCommentFiltersInput
+  feedback_notes: FeedbackNoteFiltersInput
+  fitnessprograms: FitnessprogramFiltersInput
+  fitnesss_program_templates: FitnesssProgramTemplateFiltersInput
+  informationbankmessages: InformationbankmessageFiltersInput
+  notifications: NotificationFiltersInput
+  ratings: RatingFiltersInput
+  feedback_ratings: RatingFiltersInput
+  target_feedback_notes: FeedbackNoteFiltersInput
+  upi_details_changemakers: UpiDetailsChangemakerFiltersInput
+  user_goals: UserGoalFiltersInput
+  vouchers: VoucherFiltersInput
+  website_contact_forms: WebsiteContactFormFiltersInput
+  website_datum: WebsiteDataFiltersInput
+  workouts: WorkoutFiltersInput
+  client_packages: ClientPackageFiltersInput
+  client_booking: ClientBookingFiltersInput
+  addresses: AddressFiltersInput
+  DOB: DateFilterInput
+  Gender: StringFilterInput
+  First_Name: StringFilterInput
+  Last_Name: StringFilterInput
+  designations: DesignationFiltersInput
+  Phone_Number: StringFilterInput
+  Changemaker_weekly_schedule: JSONFilterInput
+  booking_lead_time_online_mins: IntFilterInput
+  booking_lead_time_offline_mins: IntFilterInput
+  Photo_ID: StringFilterInput
+  prerecorded_messages: PrerecordedMessageFiltersInput
+  instagram_url: StringFilterInput
+  Facebook_URL: StringFilterInput
+  Youtube_URL: StringFilterInput
+  LinkedIn_URL: StringFilterInput
+  Clubhouse_URL: StringFilterInput
+  Twitter_URL: StringFilterInput
+  Verification_ID: StringFilterInput
+  Photo_profile_banner_ID: StringFilterInput
+  About_User: StringFilterInput
+  Tiktock_URL: StringFilterInput
+  organizations: OrganizationFiltersInput
+  educational_details: EducationalDetailFiltersInput
+  changemaker_workhours: ChangemakerWorkhourFiltersInput
+  changemaker_availabilties: ChangemakerAvailabiltyFiltersInput
+  languages: LanguageFiltersInput
+  Modules_permission: JSONFilterInput
+  chat_group_participant: ChatGroupParticipantFiltersInput
+  chat_message_receiver: ChatMessageReciverFiltersInput
+  chat_requests: ChatRequestFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [UsersPermissionsUserFiltersInput]
+  or: [UsersPermissionsUserFiltersInput]
+  not: UsersPermissionsUserFiltersInput
+}
+
+input UsersPermissionsUserInput {
+  username: String
+  email: String
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmationToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+  user_package_suggestions: [ID]
+  fitnesspackages: [ID]
+  bank_details: [ID]
+  changemaker_holidays: [ID]
+  exercises: [ID]
+  feedback_comments: [ID]
+  feedback_notes: [ID]
+  fitnessprograms: [ID]
+  fitnesss_program_templates: [ID]
+  informationbankmessages: [ID]
+  notifications: [ID]
+  ratings: [ID]
+  feedback_ratings: [ID]
+  target_feedback_notes: [ID]
+  upi_details_changemakers: [ID]
+  user_goals: [ID]
+  vouchers: [ID]
+  website_contact_forms: [ID]
+  website_datum: ID
+  workouts: [ID]
+  client_packages: [ID]
+  client_booking: ID
+  addresses: [ID]
+  DOB: Date
+  Gender: ENUM_USERSPERMISSIONSUSER_GENDER
+  First_Name: String
+  Last_Name: String
+  designations: [ID]
+  Phone_Number: String
+  Changemaker_weekly_schedule: JSON
+  booking_lead_time_online_mins: Int
+  booking_lead_time_offline_mins: Int
+  Photo_ID: String
+  prerecorded_messages: [ID]
+  instagram_url: String
+  Facebook_URL: String
+  Youtube_URL: String
+  LinkedIn_URL: String
+  Clubhouse_URL: String
+  Twitter_URL: String
+  Verification_ID: String
+  Photo_profile_banner_ID: String
+  About_User: String
+  Tiktock_URL: String
+  organizations: [ID]
+  educational_details: [ID]
+  changemaker_workhours: [ID]
+  changemaker_availabilties: [ID]
+  languages: [ID]
+  Modules_permission: JSON
+  chat_group_participant: ID
+  chat_message_receiver: ID
+  chat_requests: [ID]
+}
+
+type UsersPermissionsUser {
+  username: String!
+  email: String!
+  provider: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsRoleEntityResponse
+  user_package_suggestions(
+    filters: UserPackageSuggestionFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): UserPackageSuggestionRelationResponseCollection
+  fitnesspackages(
+    filters: FitnesspackageFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): FitnesspackageRelationResponseCollection
+  bank_details(
+    filters: BankDetailFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): BankDetailRelationResponseCollection
+  changemaker_holidays(
+    filters: ChangemakerHolidayFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): ChangemakerHolidayRelationResponseCollection
+  exercises(
+    filters: ExerciseFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): ExerciseRelationResponseCollection
+  feedback_comments(
+    filters: FeedbackCommentFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): FeedbackCommentRelationResponseCollection
+  feedback_notes(
+    filters: FeedbackNoteFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): FeedbackNoteRelationResponseCollection
+  fitnessprograms(
+    filters: FitnessprogramFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): FitnessprogramRelationResponseCollection
+  fitnesss_program_templates(
+    filters: FitnesssProgramTemplateFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): FitnesssProgramTemplateRelationResponseCollection
+  informationbankmessages(
+    filters: InformationbankmessageFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): InformationbankmessageRelationResponseCollection
+  notifications(
+    filters: NotificationFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): NotificationRelationResponseCollection
+  ratings(
+    filters: RatingFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): RatingRelationResponseCollection
+  feedback_ratings(
+    filters: RatingFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): RatingRelationResponseCollection
+  target_feedback_notes(
+    filters: FeedbackNoteFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): FeedbackNoteRelationResponseCollection
+  upi_details_changemakers(
+    filters: UpiDetailsChangemakerFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): UpiDetailsChangemakerRelationResponseCollection
+  user_goals(
+    filters: UserGoalFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): UserGoalRelationResponseCollection
+  vouchers(
+    filters: VoucherFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): VoucherRelationResponseCollection
+  website_contact_forms(
+    filters: WebsiteContactFormFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): WebsiteContactFormRelationResponseCollection
+  website_datum: WebsiteDataEntityResponse
+  workouts(
+    filters: WorkoutFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): WorkoutRelationResponseCollection
+  client_packages(
+    filters: ClientPackageFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): ClientPackageRelationResponseCollection
+  client_booking: ClientBookingEntityResponse
+  addresses(
+    filters: AddressFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): AddressRelationResponseCollection
+  DOB: Date
+  Gender: ENUM_USERSPERMISSIONSUSER_GENDER
+  First_Name: String
+  Last_Name: String
+  designations(
+    filters: DesignationFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): DesignationRelationResponseCollection
+  Phone_Number: String
+  Changemaker_weekly_schedule: JSON
+  booking_lead_time_online_mins: Int
+  booking_lead_time_offline_mins: Int
+  Photo_ID: String
+  prerecorded_messages(
+    filters: PrerecordedMessageFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): PrerecordedMessageRelationResponseCollection
+  instagram_url: String
+  Facebook_URL: String
+  Youtube_URL: String
+  LinkedIn_URL: String
+  Clubhouse_URL: String
+  Twitter_URL: String
+  Verification_ID: String
+  Photo_profile_banner_ID: String
+  About_User: String
+  Tiktock_URL: String
+  organizations(
+    filters: OrganizationFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): OrganizationRelationResponseCollection
+  educational_details(
+    filters: EducationalDetailFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): EducationalDetailRelationResponseCollection
+  changemaker_workhours(
+    filters: ChangemakerWorkhourFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): ChangemakerWorkhourRelationResponseCollection
+  changemaker_availabilties(
+    filters: ChangemakerAvailabiltyFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): ChangemakerAvailabiltyRelationResponseCollection
+  languages(
+    filters: LanguageFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): LanguageRelationResponseCollection
+  Modules_permission: JSON
+  chat_group_participant: ChatGroupParticipantEntityResponse
+  chat_message_receiver: ChatMessageReciverEntityResponse
+  chat_requests(
+    filters: ChatRequestFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): ChatRequestRelationResponseCollection
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type UsersPermissionsUserEntity {
+  id: ID
+  attributes: UsersPermissionsUser
+}
+
+type UsersPermissionsUserEntityResponse {
+  data: UsersPermissionsUserEntity
+}
+
+type UsersPermissionsUserEntityResponseCollection {
+  data: [UsersPermissionsUserEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type UsersPermissionsUserRelationResponseCollection {
+  data: [UsersPermissionsUserEntity!]!
+}
+
+input ActivitieFiltersInput {
+  id: IDFilterInput
+  title: StringFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  publishedAt: DateTimeFilterInput
+  and: [ActivitieFiltersInput]
+  or: [ActivitieFiltersInput]
+  not: ActivitieFiltersInput
+}
+
+input ActivitieInput {
+  title: String
+  publishedAt: DateTime
+}
+
+type Activitie {
+  title: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+type ActivitieEntity {
+  id: ID
+  attributes: Activitie
+}
+
+type ActivitieEntityResponse {
+  data: ActivitieEntity
+}
+
+type ActivitieEntityResponseCollection {
+  data: [ActivitieEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input AddressFiltersInput {
+  id: IDFilterInput
+  address1: StringFilterInput
+  type: StringFilterInput
+  address2: StringFilterInput
+  city: StringFilterInput
+  state: StringFilterInput
+  country: StringFilterInput
+  zipcode: StringFilterInput
+  latitude: StringFilterInput
+  longitude: StringFilterInput
+  users_permissions_user: UsersPermissionsUserFiltersInput
+  Title: StringFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [AddressFiltersInput]
+  or: [AddressFiltersInput]
+  not: AddressFiltersInput
+}
+
+input AddressInput {
+  address1: String
+  type: String
+  address2: String
+  city: String
+  state: String
+  country: String
+  zipcode: String
+  latitude: String
+  longitude: String
+  users_permissions_user: ID
+  Title: String
+}
+
+type Address {
+  address1: String
+  type: String
+  address2: String
+  city: String
+  state: String
+  country: String
+  zipcode: String
+  latitude: String
+  longitude: String
+  users_permissions_user: UsersPermissionsUserEntityResponse
+  Title: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type AddressEntity {
+  id: ID
+  attributes: Address
+}
+
+type AddressEntityResponse {
+  data: AddressEntity
+}
+
+type AddressEntityResponseCollection {
+  data: [AddressEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type AddressRelationResponseCollection {
+  data: [AddressEntity!]!
+}
+
+input BankDetailFiltersInput {
+  id: IDFilterInput
+  Full_Name: StringFilterInput
+  Account_Number: StringFilterInput
+  Bank_Name: StringFilterInput
+  IFSC_Code: StringFilterInput
+  PAN_Number: StringFilterInput
+  GST_Number: StringFilterInput
+  Company_Name: StringFilterInput
+  Company_Address: StringFilterInput
+  users_permissions_user: UsersPermissionsUserFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  publishedAt: DateTimeFilterInput
+  and: [BankDetailFiltersInput]
+  or: [BankDetailFiltersInput]
+  not: BankDetailFiltersInput
+}
+
+input BankDetailInput {
+  Full_Name: String
+  Account_Number: String
+  Bank_Name: String
+  IFSC_Code: String
+  PAN_Number: String
+  GST_Number: String
+  Company_Name: String
+  Company_Address: String
+  users_permissions_user: ID
+  publishedAt: DateTime
+}
+
+type BankDetail {
+  Full_Name: String
+  Account_Number: String
+  Bank_Name: String
+  IFSC_Code: String
+  PAN_Number: String
+  GST_Number: String
+  Company_Name: String
+  Company_Address: String
+  users_permissions_user: UsersPermissionsUserEntityResponse
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+type BankDetailEntity {
+  id: ID
+  attributes: BankDetail
+}
+
+type BankDetailEntityResponse {
+  data: BankDetailEntity
+}
+
+type BankDetailEntityResponseCollection {
+  data: [BankDetailEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type BankDetailRelationResponseCollection {
+  data: [BankDetailEntity!]!
+}
+
+input BookingConfigFiltersInput {
+  id: IDFilterInput
+  fitnesspackage: FitnesspackageFiltersInput
+  isAuto: BooleanFilterInput
+  bookingsPerDay: IntFilterInput
+  BookingsPerMonth: IntFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [BookingConfigFiltersInput]
+  or: [BookingConfigFiltersInput]
+  not: BookingConfigFiltersInput
+}
+
+input BookingConfigInput {
+  fitnesspackage: ID
+  isAuto: Boolean
+  bookingsPerDay: Int
+  BookingsPerMonth: Int
+}
+
+type BookingConfig {
+  fitnesspackage: FitnesspackageEntityResponse
+  isAuto: Boolean!
+  bookingsPerDay: Int
+  BookingsPerMonth: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type BookingConfigEntity {
+  id: ID
+  attributes: BookingConfig
+}
+
+type BookingConfigEntityResponse {
+  data: BookingConfigEntity
+}
+
+type BookingConfigEntityResponseCollection {
+  data: [BookingConfigEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input ChangemakerFiltersInput {
+  id: IDFilterInput
+  photo_video: StringFilterInput
+  aboutme: StringFilterInput
+  certifications: JSONFilterInput
+  languages: LanguageFiltersInput
+  designations: DesignationFiltersInput
+  addresses: AddressFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  publishedAt: DateTimeFilterInput
+  and: [ChangemakerFiltersInput]
+  or: [ChangemakerFiltersInput]
+  not: ChangemakerFiltersInput
+}
+
+input ChangemakerInput {
+  photo_video: String
+  aboutme: String
+  certifications: JSON
+  languages: [ID]
+  designations: [ID]
+  addresses: [ID]
+  publishedAt: DateTime
+}
+
+type Changemaker {
+  photo_video: String
+  aboutme: String
+  certifications: JSON
+  languages(
+    filters: LanguageFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): LanguageRelationResponseCollection
+  designations(
+    filters: DesignationFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): DesignationRelationResponseCollection
+  addresses(
+    filters: AddressFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): AddressRelationResponseCollection
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+type ChangemakerEntity {
+  id: ID
+  attributes: Changemaker
+}
+
+type ChangemakerEntityResponse {
+  data: ChangemakerEntity
+}
+
+type ChangemakerEntityResponseCollection {
+  data: [ChangemakerEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input ChangemakerAvailabiltyFiltersInput {
+  id: IDFilterInput
+  date: DateFilterInput
+  users_permissions_user: UsersPermissionsUserFiltersInput
+  booking_slots: JSONFilterInput
+  Is_Holiday: BooleanFilterInput
+  holiday_title: StringFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [ChangemakerAvailabiltyFiltersInput]
+  or: [ChangemakerAvailabiltyFiltersInput]
+  not: ChangemakerAvailabiltyFiltersInput
+}
+
+input ChangemakerAvailabiltyInput {
+  date: Date
+  users_permissions_user: ID
+  booking_slots: JSON
+  Is_Holiday: Boolean
+  holiday_title: String
+}
+
+type ChangemakerAvailabilty {
+  date: Date
+  users_permissions_user: UsersPermissionsUserEntityResponse
+  booking_slots: JSON
+  Is_Holiday: Boolean!
+  holiday_title: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type ChangemakerAvailabiltyEntity {
+  id: ID
+  attributes: ChangemakerAvailabilty
+}
+
+type ChangemakerAvailabiltyEntityResponse {
+  data: ChangemakerAvailabiltyEntity
+}
+
+type ChangemakerAvailabiltyEntityResponseCollection {
+  data: [ChangemakerAvailabiltyEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type ChangemakerAvailabiltyRelationResponseCollection {
+  data: [ChangemakerAvailabiltyEntity!]!
+}
+
+input ChangemakerHolidayFiltersInput {
+  id: IDFilterInput
+  date: DateFilterInput
+  description: StringFilterInput
+  users_permissions_user: UsersPermissionsUserFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [ChangemakerHolidayFiltersInput]
+  or: [ChangemakerHolidayFiltersInput]
+  not: ChangemakerHolidayFiltersInput
+}
+
+input ChangemakerHolidayInput {
+  date: Date
+  description: String
+  users_permissions_user: ID
+}
+
+type ChangemakerHoliday {
+  date: Date
+  description: String
+  users_permissions_user: UsersPermissionsUserEntityResponse
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type ChangemakerHolidayEntity {
+  id: ID
+  attributes: ChangemakerHoliday
+}
+
+type ChangemakerHolidayEntityResponse {
+  data: ChangemakerHolidayEntity
+}
+
+type ChangemakerHolidayEntityResponseCollection {
+  data: [ChangemakerHolidayEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type ChangemakerHolidayRelationResponseCollection {
+  data: [ChangemakerHolidayEntity!]!
+}
+
+enum ENUM_CHANGEMAKERWORKHOUR_MODE {
+  Online
+  Offline
+  Hybrid
+}
+
+input ChangemakerWorkhourFiltersInput {
+  id: IDFilterInput
+  date: DateFilterInput
+  From_time: TimeFilterInput
+  To_Time: TimeFilterInput
+  Mode: StringFilterInput
+  is_disabled: BooleanFilterInput
+  users_permissions_user: UsersPermissionsUserFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  publishedAt: DateTimeFilterInput
+  and: [ChangemakerWorkhourFiltersInput]
+  or: [ChangemakerWorkhourFiltersInput]
+  not: ChangemakerWorkhourFiltersInput
+}
+
+input ChangemakerWorkhourInput {
+  date: Date
+  From_time: Time
+  To_Time: Time
+  Mode: ENUM_CHANGEMAKERWORKHOUR_MODE
+  is_disabled: Boolean
+  users_permissions_user: ID
+  publishedAt: DateTime
+}
+
+type ChangemakerWorkhour {
+  date: Date
+  From_time: Time
+  To_Time: Time
+  Mode: ENUM_CHANGEMAKERWORKHOUR_MODE
+  is_disabled: Boolean!
+  users_permissions_user: UsersPermissionsUserEntityResponse
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+type ChangemakerWorkhourEntity {
+  id: ID
+  attributes: ChangemakerWorkhour
+}
+
+type ChangemakerWorkhourEntityResponse {
+  data: ChangemakerWorkhourEntity
+}
+
+type ChangemakerWorkhourEntityResponseCollection {
+  data: [ChangemakerWorkhourEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type ChangemakerWorkhourRelationResponseCollection {
+  data: [ChangemakerWorkhourEntity!]!
+}
+
+enum ENUM_CHATATTACHMENT_CHAT_TYPE {
+  Photo
+  Video
+  Voice
+  File
+  Location
+}
+
+input ChatAttachmentFiltersInput {
+  id: IDFilterInput
+  chat_type: StringFilterInput
+  chat_message_ID: ChatMessageFiltersInput
+  Attachment_URL: StringFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  publishedAt: DateTimeFilterInput
+  and: [ChatAttachmentFiltersInput]
+  or: [ChatAttachmentFiltersInput]
+  not: ChatAttachmentFiltersInput
+}
+
+input ChatAttachmentInput {
+  chat_type: ENUM_CHATATTACHMENT_CHAT_TYPE
+  chat_message_ID: ID
+  Attachment_URL: String
+  publishedAt: DateTime
+}
+
+type ChatAttachment {
+  chat_type: ENUM_CHATATTACHMENT_CHAT_TYPE
+  chat_message_ID: ChatMessageEntityResponse
+  Attachment_URL: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+type ChatAttachmentEntity {
+  id: ID
+  attributes: ChatAttachment
+}
+
+type ChatAttachmentEntityResponse {
+  data: ChatAttachmentEntity
+}
+
+type ChatAttachmentEntityResponseCollection {
+  data: [ChatAttachmentEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input ChatGroupFiltersInput {
+  id: IDFilterInput
+  Group_name: StringFilterInput
+  Group_Description: StringFilterInput
+  chat_messages_ID: ChatMessageFiltersInput
+  chat_group_participants_ID: ChatGroupParticipantFiltersInput
+  Group_Profile_ID: StringFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  publishedAt: DateTimeFilterInput
+  and: [ChatGroupFiltersInput]
+  or: [ChatGroupFiltersInput]
+  not: ChatGroupFiltersInput
+}
+
+input ChatGroupInput {
+  Group_name: String
+  Group_Description: String
+  chat_messages_ID: [ID]
+  chat_group_participants_ID: [ID]
+  Group_Profile_ID: String
+  publishedAt: DateTime
+}
+
+type ChatGroup {
+  Group_name: String
+  Group_Description: String
+  chat_messages_ID(
+    filters: ChatMessageFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): ChatMessageRelationResponseCollection
+  chat_group_participants_ID(
+    filters: ChatGroupParticipantFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): ChatGroupParticipantRelationResponseCollection
+  Group_Profile_ID: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+type ChatGroupEntity {
+  id: ID
+  attributes: ChatGroup
+}
+
+type ChatGroupEntityResponse {
+  data: ChatGroupEntity
+}
+
+type ChatGroupEntityResponseCollection {
+  data: [ChatGroupEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type ChatGroupRelationResponseCollection {
+  data: [ChatGroupEntity!]!
+}
+
+input ChatGroupParticipantFiltersInput {
+  id: IDFilterInput
+  Is_admin: BooleanFilterInput
+  chat_group_ID: ChatGroupFiltersInput
+  user_id: UsersPermissionsUserFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  publishedAt: DateTimeFilterInput
+  and: [ChatGroupParticipantFiltersInput]
+  or: [ChatGroupParticipantFiltersInput]
+  not: ChatGroupParticipantFiltersInput
+}
+
+input ChatGroupParticipantInput {
+  Is_admin: Boolean
+  chat_group_ID: [ID]
+  user_id: ID
+  publishedAt: DateTime
+}
+
+type ChatGroupParticipant {
+  Is_admin: Boolean
+  chat_group_ID(
+    filters: ChatGroupFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): ChatGroupRelationResponseCollection
+  user_id: UsersPermissionsUserEntityResponse
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+type ChatGroupParticipantEntity {
+  id: ID
+  attributes: ChatGroupParticipant
+}
+
+type ChatGroupParticipantEntityResponse {
+  data: ChatGroupParticipantEntity
+}
+
+type ChatGroupParticipantEntityResponseCollection {
+  data: [ChatGroupParticipantEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type ChatGroupParticipantRelationResponseCollection {
+  data: [ChatGroupParticipantEntity!]!
+}
+
+enum ENUM_CHATMESSAGE_CHAT_TYPE {
+  Text
+  Photo
+  Video
+  Voice
+  File
+  Location
+}
+
+input ChatMessageFiltersInput {
+  id: IDFilterInput
+  chat_body: StringFilterInput
+  chat_type: StringFilterInput
+  Chat_sender_ID: UsersPermissionsUserFiltersInput
+  chat_attachment_ID: ChatAttachmentFiltersInput
+  chat_message_receivers_ID: ChatMessageReciverFiltersInput
+  chat_group_ID: ChatGroupFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  publishedAt: DateTimeFilterInput
+  and: [ChatMessageFiltersInput]
+  or: [ChatMessageFiltersInput]
+  not: ChatMessageFiltersInput
+}
+
+input ChatMessageInput {
+  chat_body: String
+  chat_type: ENUM_CHATMESSAGE_CHAT_TYPE
+  Chat_sender_ID: ID
+  chat_attachment_ID: ID
+  chat_message_receivers_ID: [ID]
+  chat_group_ID: ID
+  publishedAt: DateTime
+}
+
+type ChatMessage {
+  chat_body: String
+  chat_type: ENUM_CHATMESSAGE_CHAT_TYPE
+  Chat_sender_ID: UsersPermissionsUserEntityResponse
+  chat_attachment_ID: ChatAttachmentEntityResponse
+  chat_message_receivers_ID(
+    filters: ChatMessageReciverFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): ChatMessageReciverRelationResponseCollection
+  chat_group_ID: ChatGroupEntityResponse
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+type ChatMessageEntity {
+  id: ID
+  attributes: ChatMessage
+}
+
+type ChatMessageEntityResponse {
+  data: ChatMessageEntity
+}
+
+type ChatMessageEntityResponseCollection {
+  data: [ChatMessageEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type ChatMessageRelationResponseCollection {
+  data: [ChatMessageEntity!]!
+}
+
+enum ENUM_CHATMESSAGERECIVER_CHAT_STATUS {
+  Delivered
+  Seen
+}
+
+input ChatMessageReciverFiltersInput {
+  id: IDFilterInput
+  Chat_status: StringFilterInput
+  chat_message_ID: ChatMessageFiltersInput
+  chat_receiver_ID: UsersPermissionsUserFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [ChatMessageReciverFiltersInput]
+  or: [ChatMessageReciverFiltersInput]
+  not: ChatMessageReciverFiltersInput
+}
+
+input ChatMessageReciverInput {
+  Chat_status: ENUM_CHATMESSAGERECIVER_CHAT_STATUS
+  chat_message_ID: ID
+  chat_receiver_ID: ID
+}
+
+type ChatMessageReciver {
+  Chat_status: ENUM_CHATMESSAGERECIVER_CHAT_STATUS
+  chat_message_ID: ChatMessageEntityResponse
+  chat_receiver_ID: UsersPermissionsUserEntityResponse
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type ChatMessageReciverEntity {
+  id: ID
+  attributes: ChatMessageReciver
+}
+
+type ChatMessageReciverEntityResponse {
+  data: ChatMessageReciverEntity
+}
+
+type ChatMessageReciverEntityResponseCollection {
+  data: [ChatMessageReciverEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type ChatMessageReciverRelationResponseCollection {
+  data: [ChatMessageReciverEntity!]!
+}
+
+enum ENUM_CHATREQUEST_STATUS {
+  Approved
+  Rejected
+  Blocked
+}
+
+input ChatRequestFiltersInput {
+  id: IDFilterInput
+  sender_id: UsersPermissionsUserFiltersInput
+  receiver_id: UsersPermissionsUserFiltersInput
+  status: StringFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [ChatRequestFiltersInput]
+  or: [ChatRequestFiltersInput]
+  not: ChatRequestFiltersInput
+}
+
+input ChatRequestInput {
+  sender_id: [ID]
+  receiver_id: ID
+  status: ENUM_CHATREQUEST_STATUS
+}
+
+type ChatRequest {
+  sender_id(
+    filters: UsersPermissionsUserFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): UsersPermissionsUserRelationResponseCollection
+  receiver_id: UsersPermissionsUserEntityResponse
+  status: ENUM_CHATREQUEST_STATUS
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type ChatRequestEntity {
+  id: ID
+  attributes: ChatRequest
+}
+
+type ChatRequestEntityResponse {
+  data: ChatRequestEntity
+}
+
+type ChatRequestEntityResponseCollection {
+  data: [ChatRequestEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type ChatRequestRelationResponseCollection {
+  data: [ChatRequestEntity!]!
+}
+
+enum ENUM_CLIENTBOOKING_BOOKING_STATUS {
+  accepted
+  rejected
+  pending
+}
+
+input ClientBookingFiltersInput {
+  id: IDFilterInput
+  users_permissions_users: UsersPermissionsUserFiltersInput
+  fitnesspackages: FitnesspackageFiltersInput
+  booking_date: DateTimeFilterInput
+  package_duration: IntFilterInput
+  effective_date: DateTimeFilterInput
+  program_managers: ProgramManagerFiltersInput
+  booking_status: StringFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [ClientBookingFiltersInput]
+  or: [ClientBookingFiltersInput]
+  not: ClientBookingFiltersInput
+}
+
+input ClientBookingInput {
+  users_permissions_users: [ID]
+  fitnesspackages: [ID]
+  booking_date: DateTime
+  package_duration: Int
+  effective_date: DateTime
+  program_managers: [ID]
+  booking_status: ENUM_CLIENTBOOKING_BOOKING_STATUS
+}
+
+type ClientBooking {
+  users_permissions_users(
+    filters: UsersPermissionsUserFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): UsersPermissionsUserRelationResponseCollection
+  fitnesspackages(
+    filters: FitnesspackageFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): FitnesspackageRelationResponseCollection
+  booking_date: DateTime
+  package_duration: Int
+  effective_date: DateTime
+  program_managers(
+    filters: ProgramManagerFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): ProgramManagerRelationResponseCollection
+  booking_status: ENUM_CLIENTBOOKING_BOOKING_STATUS
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type ClientBookingEntity {
+  id: ID
+  attributes: ClientBooking
+}
+
+type ClientBookingEntityResponse {
+  data: ClientBookingEntity
+}
+
+type ClientBookingEntityResponseCollection {
+  data: [ClientBookingEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input ClientPackageFiltersInput {
+  id: IDFilterInput
+  users_permissions_user: UsersPermissionsUserFiltersInput
+  fitnesspackages: FitnesspackageFiltersInput
+  accepted_date: DateTimeFilterInput
+  package_duration: IntFilterInput
+  effective_date: DateTimeFilterInput
+  program_managers: ProgramManagerFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [ClientPackageFiltersInput]
+  or: [ClientPackageFiltersInput]
+  not: ClientPackageFiltersInput
+}
+
+input ClientPackageInput {
+  users_permissions_user: ID
+  fitnesspackages: [ID]
+  accepted_date: DateTime
+  package_duration: Int
+  effective_date: DateTime
+  program_managers: [ID]
+}
+
+type ClientPackage {
+  users_permissions_user: UsersPermissionsUserEntityResponse
+  fitnesspackages(
+    filters: FitnesspackageFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): FitnesspackageRelationResponseCollection
+  accepted_date: DateTime
+  package_duration: Int
+  effective_date: DateTime
+  program_managers(
+    filters: ProgramManagerFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): ProgramManagerRelationResponseCollection
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type ClientPackageEntity {
+  id: ID
+  attributes: ClientPackage
+}
+
+type ClientPackageEntityResponse {
+  data: ClientPackageEntity
+}
+
+type ClientPackageEntityResponseCollection {
+  data: [ClientPackageEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type ClientPackageRelationResponseCollection {
+  data: [ClientPackageEntity!]!
+}
+
+input ContactSapiensystemFiltersInput {
+  id: IDFilterInput
+  name: StringFilterInput
+  email: StringFilterInput
+  number: StringFilterInput
+  message: StringFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  publishedAt: DateTimeFilterInput
+  and: [ContactSapiensystemFiltersInput]
+  or: [ContactSapiensystemFiltersInput]
+  not: ContactSapiensystemFiltersInput
+}
+
+input ContactSapiensystemInput {
+  name: String
+  email: String
+  number: String
+  message: String
+  publishedAt: DateTime
+}
+
+type ContactSapiensystem {
+  name: String
+  email: String
+  number: String
+  message: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+type ContactSapiensystemEntity {
+  id: ID
+  attributes: ContactSapiensystem
+}
+
+type ContactSapiensystemEntityResponse {
+  data: ContactSapiensystemEntity
+}
+
+type ContactSapiensystemEntityResponseCollection {
+  data: [ContactSapiensystemEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input DesignationFiltersInput {
+  id: IDFilterInput
+  Designation_title: StringFilterInput
+  description: StringFilterInput
+  users_permissions_user: UsersPermissionsUserFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  publishedAt: DateTimeFilterInput
+  and: [DesignationFiltersInput]
+  or: [DesignationFiltersInput]
+  not: DesignationFiltersInput
+}
+
+input DesignationInput {
+  Designation_title: String
+  description: String
+  users_permissions_user: ID
+  publishedAt: DateTime
+}
+
+type Designation {
+  Designation_title: String
+  description: String
+  users_permissions_user: UsersPermissionsUserEntityResponse
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+type DesignationEntity {
+  id: ID
+  attributes: Designation
+}
+
+type DesignationEntityResponse {
+  data: DesignationEntity
+}
+
+type DesignationEntityResponseCollection {
+  data: [DesignationEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type DesignationRelationResponseCollection {
+  data: [DesignationEntity!]!
+}
+
+enum ENUM_EDUCATIONALDETAIL_TYPE_OF_DEGREE {
+  Bachelors
+  Master
+  Diploma
+  Certification
+}
+
+input EducationalDetailFiltersInput {
+  id: IDFilterInput
+  Institute_Name: StringFilterInput
+  Type_of_degree: StringFilterInput
+  Specialization: StringFilterInput
+  users_permissions_user: UsersPermissionsUserFiltersInput
+  Year: StringFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [EducationalDetailFiltersInput]
+  or: [EducationalDetailFiltersInput]
+  not: EducationalDetailFiltersInput
+}
+
+input EducationalDetailInput {
+  Institute_Name: String
+  Type_of_degree: ENUM_EDUCATIONALDETAIL_TYPE_OF_DEGREE
+  Specialization: String
+  users_permissions_user: ID
+  Year: String
+}
+
+type EducationalDetail {
+  Institute_Name: String
+  Type_of_degree: ENUM_EDUCATIONALDETAIL_TYPE_OF_DEGREE
+  Specialization: String
+  users_permissions_user: UsersPermissionsUserEntityResponse
+  Year: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type EducationalDetailEntity {
+  id: ID
+  attributes: EducationalDetail
+}
+
+type EducationalDetailEntityResponse {
+  data: EducationalDetailEntity
+}
+
+type EducationalDetailEntityResponseCollection {
+  data: [EducationalDetailEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type EducationalDetailRelationResponseCollection {
+  data: [EducationalDetailEntity!]!
+}
+
+enum ENUM_EQUIPMENTLIST_CATEGORY {
+  food
+  fitness
+}
+
+input EquipmentListFiltersInput {
+  id: IDFilterInput
+  name: StringFilterInput
+  image: StringFilterInput
+  category: StringFilterInput
+  description: StringFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  publishedAt: DateTimeFilterInput
+  and: [EquipmentListFiltersInput]
+  or: [EquipmentListFiltersInput]
+  not: EquipmentListFiltersInput
+}
+
+input EquipmentListInput {
+  name: String
+  image: String
+  category: ENUM_EQUIPMENTLIST_CATEGORY
+  description: String
+  publishedAt: DateTime
+}
+
+type EquipmentList {
+  name: String
+  image: String
+  category: ENUM_EQUIPMENTLIST_CATEGORY
+  description: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+type EquipmentListEntity {
+  id: ID
+  attributes: EquipmentList
+}
+
+type EquipmentListEntityResponse {
+  data: EquipmentListEntity
+}
+
+type EquipmentListEntityResponseCollection {
+  data: [EquipmentListEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type EquipmentListRelationResponseCollection {
+  data: [EquipmentListEntity!]!
+}
+
+enum ENUM_EXERCISE_EXERCISELEVEL {
+  Beginner
+  Intermediate
+  Advance
+  All_Levels
+  None
+}
+
+input ExerciseFiltersInput {
+  id: IDFilterInput
+  exercisename: StringFilterInput
+  exerciselevel: StringFilterInput
+  exerciseminidescription: StringFilterInput
+  exercisetext: StringFilterInput
+  exerciseurl: StringFilterInput
+  exerciseupload: StringFilterInput
+  fitnessdisciplines: FitnessdisciplineFiltersInput
+  equipment_lists: EquipmentListFiltersInput
+  users_permissions_user: UsersPermissionsUserFiltersInput
+  muscle_groups: MuscleGroupFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [ExerciseFiltersInput]
+  or: [ExerciseFiltersInput]
+  not: ExerciseFiltersInput
+}
+
+input ExerciseInput {
+  exercisename: String
+  exerciselevel: ENUM_EXERCISE_EXERCISELEVEL
+  exerciseminidescription: String
+  exercisetext: String
+  exerciseurl: String
+  exerciseupload: String
+  fitnessdisciplines: [ID]
+  equipment_lists: [ID]
+  users_permissions_user: ID
+  muscle_groups: [ID]
+}
+
+type Exercise {
+  exercisename: String
+  exerciselevel: ENUM_EXERCISE_EXERCISELEVEL
+  exerciseminidescription: String
+  exercisetext: String
+  exerciseurl: String
+  exerciseupload: String
+  fitnessdisciplines(
+    filters: FitnessdisciplineFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): FitnessdisciplineRelationResponseCollection
+  equipment_lists(
+    filters: EquipmentListFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): EquipmentListRelationResponseCollection
+  users_permissions_user: UsersPermissionsUserEntityResponse
+  muscle_groups(
+    filters: MuscleGroupFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): MuscleGroupRelationResponseCollection
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type ExerciseEntity {
+  id: ID
+  attributes: Exercise
+}
+
+type ExerciseEntityResponse {
+  data: ExerciseEntity
+}
+
+type ExerciseEntityResponseCollection {
+  data: [ExerciseEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type ExerciseRelationResponseCollection {
+  data: [ExerciseEntity!]!
+}
+
+input FaqsSapienliveFiltersInput {
+  id: IDFilterInput
+  question: StringFilterInput
+  answer: StringFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  publishedAt: DateTimeFilterInput
+  and: [FaqsSapienliveFiltersInput]
+  or: [FaqsSapienliveFiltersInput]
+  not: FaqsSapienliveFiltersInput
+}
+
+input FaqsSapienliveInput {
+  question: String
+  answer: String
+  publishedAt: DateTime
+}
+
+type FaqsSapienlive {
+  question: String
+  answer: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+type FaqsSapienliveEntity {
+  id: ID
+  attributes: FaqsSapienlive
+}
+
+type FaqsSapienliveEntityResponse {
+  data: FaqsSapienliveEntity
+}
+
+type FaqsSapienliveEntityResponseCollection {
+  data: [FaqsSapienliveEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input FaqsSapiensystemFiltersInput {
+  id: IDFilterInput
+  Question: StringFilterInput
+  Answer: StringFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [FaqsSapiensystemFiltersInput]
+  or: [FaqsSapiensystemFiltersInput]
+  not: FaqsSapiensystemFiltersInput
+}
+
+input FaqsSapiensystemInput {
+  Question: String
+  Answer: String
+}
+
+type FaqsSapiensystem {
+  Question: String
+  Answer: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type FaqsSapiensystemEntity {
+  id: ID
+  attributes: FaqsSapiensystem
+}
+
+type FaqsSapiensystemEntityResponse {
+  data: FaqsSapiensystemEntity
+}
+
+type FaqsSapiensystemEntityResponseCollection {
+  data: [FaqsSapiensystemEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input FeedbackCommentFiltersInput {
+  id: IDFilterInput
+  comment: StringFilterInput
+  users_permissions_user: UsersPermissionsUserFiltersInput
+  feedback_note: FeedbackNoteFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [FeedbackCommentFiltersInput]
+  or: [FeedbackCommentFiltersInput]
+  not: FeedbackCommentFiltersInput
+}
+
+input FeedbackCommentInput {
+  comment: String
+  users_permissions_user: ID
+  feedback_note: ID
+}
+
+type FeedbackComment {
+  comment: String
+  users_permissions_user: UsersPermissionsUserEntityResponse
+  feedback_note: FeedbackNoteEntityResponse
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type FeedbackCommentEntity {
+  id: ID
+  attributes: FeedbackComment
+}
+
+type FeedbackCommentEntityResponse {
+  data: FeedbackCommentEntity
+}
+
+type FeedbackCommentEntityResponseCollection {
+  data: [FeedbackCommentEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type FeedbackCommentRelationResponseCollection {
+  data: [FeedbackCommentEntity!]!
+}
+
+input FeedbackNoteFiltersInput {
+  id: IDFilterInput
+  type: StringFilterInput
+  resource_id: StringFilterInput
+  note: StringFilterInput
+  users_permissions_user: UsersPermissionsUserFiltersInput
+  feedback_comments: FeedbackCommentFiltersInput
+  target_user: UsersPermissionsUserFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [FeedbackNoteFiltersInput]
+  or: [FeedbackNoteFiltersInput]
+  not: FeedbackNoteFiltersInput
+}
+
+input FeedbackNoteInput {
+  type: String
+  resource_id: String
+  note: String
+  users_permissions_user: ID
+  feedback_comments: [ID]
+  target_user: ID
+}
+
+type FeedbackNote {
+  type: String
+  resource_id: String
+  note: String
+  users_permissions_user: UsersPermissionsUserEntityResponse
+  feedback_comments(
+    filters: FeedbackCommentFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): FeedbackCommentRelationResponseCollection
+  target_user: UsersPermissionsUserEntityResponse
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type FeedbackNoteEntity {
+  id: ID
+  attributes: FeedbackNote
+}
+
+type FeedbackNoteEntityResponse {
+  data: FeedbackNoteEntity
+}
+
+type FeedbackNoteEntityResponseCollection {
+  data: [FeedbackNoteEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type FeedbackNoteRelationResponseCollection {
+  data: [FeedbackNoteEntity!]!
+}
+
+input FitnessModeFiltersInput {
+  id: IDFilterInput
+  mode: StringFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  publishedAt: DateTimeFilterInput
+  and: [FitnessModeFiltersInput]
+  or: [FitnessModeFiltersInput]
+  not: FitnessModeFiltersInput
+}
+
+input FitnessModeInput {
+  mode: String
+  publishedAt: DateTime
+}
+
+type FitnessMode {
+  mode: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+type FitnessModeEntity {
+  id: ID
+  attributes: FitnessMode
+}
+
+type FitnessModeEntityResponse {
+  data: FitnessModeEntity
+}
+
+type FitnessModeEntityResponseCollection {
+  data: [FitnessModeEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type FitnessModeRelationResponseCollection {
+  data: [FitnessModeEntity!]!
+}
+
+input FitnessPackageTypeFiltersInput {
+  id: IDFilterInput
+  type: StringFilterInput
+  description: StringFilterInput
+  background_colour: StringFilterInput
+  fitnesspackages: FitnesspackageFiltersInput
+  fitnessprograms: FitnessprogramFiltersInput
+  sapien_pricings: SapienPricingFiltersInput
+  suggested_pricings: SuggestedPricingFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  publishedAt: DateTimeFilterInput
+  and: [FitnessPackageTypeFiltersInput]
+  or: [FitnessPackageTypeFiltersInput]
+  not: FitnessPackageTypeFiltersInput
+}
+
+input FitnessPackageTypeInput {
+  type: String
+  description: String
+  background_colour: String
+  fitnesspackages: [ID]
+  fitnessprograms: [ID]
+  sapien_pricings: [ID]
+  suggested_pricings: [ID]
+  publishedAt: DateTime
+}
+
+type FitnessPackageType {
+  type: String
+  description: String
+  background_colour: String
+  fitnesspackages(
+    filters: FitnesspackageFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): FitnesspackageRelationResponseCollection
+  fitnessprograms(
+    filters: FitnessprogramFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): FitnessprogramRelationResponseCollection
+  sapien_pricings(
+    filters: SapienPricingFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): SapienPricingRelationResponseCollection
+  suggested_pricings(
+    filters: SuggestedPricingFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): SuggestedPricingRelationResponseCollection
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+type FitnessPackageTypeEntity {
+  id: ID
+  attributes: FitnessPackageType
+}
+
+type FitnessPackageTypeEntityResponse {
+  data: FitnessPackageTypeEntity
+}
+
+type FitnessPackageTypeEntityResponseCollection {
+  data: [FitnessPackageTypeEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input FitnessdisciplineFiltersInput {
+  id: IDFilterInput
+  disciplinename: StringFilterInput
+  Image_URL: StringFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  publishedAt: DateTimeFilterInput
+  and: [FitnessdisciplineFiltersInput]
+  or: [FitnessdisciplineFiltersInput]
+  not: FitnessdisciplineFiltersInput
+}
+
+input FitnessdisciplineInput {
+  disciplinename: String
+  Image_URL: String
+  publishedAt: DateTime
+}
+
+type Fitnessdiscipline {
+  disciplinename: String
+  Image_URL: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+type FitnessdisciplineEntity {
+  id: ID
+  attributes: Fitnessdiscipline
+}
+
+type FitnessdisciplineEntityResponse {
+  data: FitnessdisciplineEntity
+}
+
+type FitnessdisciplineEntityResponseCollection {
+  data: [FitnessdisciplineEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type FitnessdisciplineRelationResponseCollection {
+  data: [FitnessdisciplineEntity!]!
+}
+
+enum ENUM_FITNESSPACKAGE_LEVEL {
+  Beginner
+  Intermediate
+  Advanced
+}
+
+enum ENUM_FITNESSPACKAGE_MODE {
+  Online
+  Offline
+  Hybrid
+  Online_workout
+  Offline_workout
+}
+
+enum ENUM_FITNESSPACKAGE_PTCLASSSIZE {
+  Solo
+  Couple
+  Family
+}
+
+enum ENUM_FITNESSPACKAGE_INTENSITY {
+  Low
+  Moderate
+  Difficult
+}
+
+input FitnesspackageFiltersInput {
+  id: IDFilterInput
+  packagename: StringFilterInput
+  tags: StringFilterInput
+  level: StringFilterInput
+  aboutpackage: StringFilterInput
+  benefits: StringFilterInput
+  intropicture: StringFilterInput
+  introvideo: StringFilterInput
+  mode: StringFilterInput
+  ptoffline: IntFilterInput
+  ptonline: IntFilterInput
+  grouponline: IntFilterInput
+  groupoffline: IntFilterInput
+  recordedclasses: IntFilterInput
+  restdays: IntFilterInput
+  bookingleadday: IntFilterInput
+  fitnesspackagepricing: JSONFilterInput
+  duration: IntFilterInput
+  groupstarttime: StringFilterInput
+  groupendtime: StringFilterInput
+  groupinstantbooking: BooleanFilterInput
+  Ptclasssize: StringFilterInput
+  classsize: IntFilterInput
+  groupdays: StringFilterInput
+  Status: BooleanFilterInput
+  is_private: BooleanFilterInput
+  bookingleadtime: StringFilterInput
+  publishing_date: DateTimeFilterInput
+  expiry_date: DateTimeFilterInput
+  fitnessdisciplines: FitnessdisciplineFiltersInput
+  user_package_suggestions: UserPackageSuggestionFiltersInput
+  booking_config: BookingConfigFiltersInput
+  address: AddressFiltersInput
+  fitness_package_type: FitnessPackageTypeFiltersInput
+  users_permissions_user: UsersPermissionsUserFiltersInput
+  intensity: StringFilterInput
+  equipment_lists: EquipmentListFiltersInput
+  how_it_work: HowItWorksFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [FitnesspackageFiltersInput]
+  or: [FitnesspackageFiltersInput]
+  not: FitnesspackageFiltersInput
+}
+
+input FitnesspackageInput {
+  packagename: String
+  tags: String
+  level: ENUM_FITNESSPACKAGE_LEVEL
+  aboutpackage: String
+  benefits: String
+  intropicture: String
+  introvideo: String
+  mode: ENUM_FITNESSPACKAGE_MODE
+  ptoffline: Int
+  ptonline: Int
+  grouponline: Int
+  groupoffline: Int
+  recordedclasses: Int
+  restdays: Int
+  bookingleadday: Int
+  fitnesspackagepricing: JSON
+  duration: Int
+  groupstarttime: String
+  groupendtime: String
+  groupinstantbooking: Boolean
+  Ptclasssize: ENUM_FITNESSPACKAGE_PTCLASSSIZE
+  classsize: Int
+  groupdays: String
+  Status: Boolean
+  is_private: Boolean
+  bookingleadtime: String
+  publishing_date: DateTime
+  expiry_date: DateTime
+  fitnessdisciplines: [ID]
+  user_package_suggestions: [ID]
+  booking_config: ID
+  address: ID
+  fitness_package_type: ID
+  users_permissions_user: ID
+  intensity: ENUM_FITNESSPACKAGE_INTENSITY
+  equipment_lists: [ID]
+  how_it_work: ID
+}
+
+type Fitnesspackage {
+  packagename: String
+  tags: String
+  level: ENUM_FITNESSPACKAGE_LEVEL
+  aboutpackage: String
+  benefits: String
+  intropicture: String
+  introvideo: String
+  mode: ENUM_FITNESSPACKAGE_MODE
+  ptoffline: Int
+  ptonline: Int
+  grouponline: Int
+  groupoffline: Int
+  recordedclasses: Int
+  restdays: Int
+  bookingleadday: Int
+  fitnesspackagepricing: JSON
+  duration: Int
+  groupstarttime: String
+  groupendtime: String
+  groupinstantbooking: Boolean
+  Ptclasssize: ENUM_FITNESSPACKAGE_PTCLASSSIZE
+  classsize: Int
+  groupdays: String
+  Status: Boolean
+  is_private: Boolean
+  bookingleadtime: String
+  publishing_date: DateTime!
+  expiry_date: DateTime!
+  fitnessdisciplines(
+    filters: FitnessdisciplineFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): FitnessdisciplineRelationResponseCollection
+  user_package_suggestions(
+    filters: UserPackageSuggestionFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): UserPackageSuggestionRelationResponseCollection
+  booking_config: BookingConfigEntityResponse
+  address: AddressEntityResponse
+  fitness_package_type: FitnessPackageTypeEntityResponse
+  users_permissions_user: UsersPermissionsUserEntityResponse
+  intensity: ENUM_FITNESSPACKAGE_INTENSITY
+  equipment_lists(
+    filters: EquipmentListFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): EquipmentListRelationResponseCollection
+  how_it_work: HowItWorksEntityResponse
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type FitnesspackageEntity {
+  id: ID
+  attributes: Fitnesspackage
+}
+
+type FitnesspackageEntityResponse {
+  data: FitnesspackageEntity
+}
+
+type FitnesspackageEntityResponseCollection {
+  data: [FitnesspackageEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type FitnesspackageRelationResponseCollection {
+  data: [FitnesspackageEntity!]!
+}
+
+enum ENUM_FITNESSPROGRAM_LEVEL {
+  Beginner
+  Intermediate
+  Advanced
+  All_levels
+  None
+}
+
+input FitnessprogramFiltersInput {
+  id: IDFilterInput
+  title: StringFilterInput
+  description: StringFilterInput
+  duration_days: IntFilterInput
+  level: StringFilterInput
+  fitnessdisciplines: FitnessdisciplineFiltersInput
+  users_permissions_user: UsersPermissionsUserFiltersInput
+  events: JSONFilterInput
+  fitness_package_type: FitnessPackageTypeFiltersInput
+  fitness_modes: FitnessModeFiltersInput
+  Is_program: BooleanFilterInput
+  rest_days: JSONFilterInput
+  renewal_dt: IntFilterInput
+  start_dt: DateFilterInput
+  end_dt: DateFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [FitnessprogramFiltersInput]
+  or: [FitnessprogramFiltersInput]
+  not: FitnessprogramFiltersInput
+}
+
+input FitnessprogramInput {
+  title: String
+  description: String
+  duration_days: Int
+  level: ENUM_FITNESSPROGRAM_LEVEL
+  fitnessdisciplines: [ID]
+  users_permissions_user: ID
+  events: JSON
+  fitness_package_type: ID
+  fitness_modes: [ID]
+  Is_program: Boolean
+  rest_days: JSON
+  renewal_dt: Int
+  start_dt: Date
+  end_dt: Date
+}
+
+type Fitnessprogram {
+  title: String
+  description: String
+  duration_days: Int
+  level: ENUM_FITNESSPROGRAM_LEVEL
+  fitnessdisciplines(
+    filters: FitnessdisciplineFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): FitnessdisciplineRelationResponseCollection
+  users_permissions_user: UsersPermissionsUserEntityResponse
+  events: JSON
+  fitness_package_type: FitnessPackageTypeEntityResponse
+  fitness_modes(
+    filters: FitnessModeFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): FitnessModeRelationResponseCollection
+  Is_program: Boolean
+  rest_days: JSON
+  renewal_dt: Int
+  start_dt: Date
+  end_dt: Date
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type FitnessprogramEntity {
+  id: ID
+  attributes: Fitnessprogram
+}
+
+type FitnessprogramEntityResponse {
+  data: FitnessprogramEntity
+}
+
+type FitnessprogramEntityResponseCollection {
+  data: [FitnessprogramEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type FitnessprogramRelationResponseCollection {
+  data: [FitnessprogramEntity!]!
+}
+
+enum ENUM_FITNESSSPROGRAMTEMPLATE_LEVEL {
+  Beginner
+  Intermediate
+  Advanced
+  All_levels
+  None
+}
+
+input FitnesssProgramTemplateFiltersInput {
+  id: IDFilterInput
+  Program_template_name: StringFilterInput
+  fitnessdisciplines: FitnessdisciplineFiltersInput
+  equipment_lists: EquipmentListFiltersInput
+  Details: StringFilterInput
+  level: StringFilterInput
+  Duration: IntFilterInput
+  Time: TimeFilterInput
+  users_permissions_user: UsersPermissionsUserFiltersInput
+  exercises: ExerciseFiltersInput
+  workouts: WorkoutFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [FitnesssProgramTemplateFiltersInput]
+  or: [FitnesssProgramTemplateFiltersInput]
+  not: FitnesssProgramTemplateFiltersInput
+}
+
+input FitnesssProgramTemplateInput {
+  Program_template_name: String
+  fitnessdisciplines: [ID]
+  equipment_lists: [ID]
+  Details: String
+  level: ENUM_FITNESSSPROGRAMTEMPLATE_LEVEL
+  Duration: Int
+  Time: Time
+  users_permissions_user: ID
+  exercises: [ID]
+  workouts: [ID]
+}
+
+type FitnesssProgramTemplate {
+  Program_template_name: String
+  fitnessdisciplines(
+    filters: FitnessdisciplineFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): FitnessdisciplineRelationResponseCollection
+  equipment_lists(
+    filters: EquipmentListFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): EquipmentListRelationResponseCollection
+  Details: String
+  level: ENUM_FITNESSSPROGRAMTEMPLATE_LEVEL
+  Duration: Int
+  Time: Time
+  users_permissions_user: UsersPermissionsUserEntityResponse
+  exercises(
+    filters: ExerciseFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): ExerciseRelationResponseCollection
+  workouts(
+    filters: WorkoutFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): WorkoutRelationResponseCollection
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type FitnesssProgramTemplateEntity {
+  id: ID
+  attributes: FitnesssProgramTemplate
+}
+
+type FitnesssProgramTemplateEntityResponse {
+  data: FitnesssProgramTemplateEntity
+}
+
+type FitnesssProgramTemplateEntityResponseCollection {
+  data: [FitnesssProgramTemplateEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type FitnesssProgramTemplateRelationResponseCollection {
+  data: [FitnesssProgramTemplateEntity!]!
+}
+
+enum ENUM_GOAL_CATEGORY {
+  Fitness
+  Nutrition
+  Mental_Health
+  Health
+}
+
+input GoalFiltersInput {
+  id: IDFilterInput
+  name: StringFilterInput
+  category: StringFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  publishedAt: DateTimeFilterInput
+  and: [GoalFiltersInput]
+  or: [GoalFiltersInput]
+  not: GoalFiltersInput
+}
+
+input GoalInput {
+  name: String
+  category: ENUM_GOAL_CATEGORY
+  publishedAt: DateTime
+}
+
+type Goal {
+  name: String
+  category: ENUM_GOAL_CATEGORY
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+type GoalEntity {
+  id: ID
+  attributes: Goal
+}
+
+type GoalEntityResponse {
+  data: GoalEntity
+}
+
+type GoalEntityResponseCollection {
+  data: [GoalEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type GoalRelationResponseCollection {
+  data: [GoalEntity!]!
+}
+
+input HowItWorksFiltersInput {
+  id: IDFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  publishedAt: DateTimeFilterInput
+  and: [HowItWorksFiltersInput]
+  or: [HowItWorksFiltersInput]
+  not: HowItWorksFiltersInput
+}
+
+input HowItWorksInput {
+  Questions: [ComponentWhyHowInput]
+  publishedAt: DateTime
+}
+
+type HowItWorks {
+  Questions(
+    filters: ComponentWhyHowFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): [ComponentWhyHow]
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+type HowItWorksEntity {
+  id: ID
+  attributes: HowItWorks
+}
+
+type HowItWorksEntityResponse {
+  data: HowItWorksEntity
+}
+
+type HowItWorksEntityResponseCollection {
+  data: [HowItWorksEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input InformationbankmessageFiltersInput {
+  id: IDFilterInput
+  title: StringFilterInput
+  description: StringFilterInput
+  minidescription: StringFilterInput
+  tags: StringFilterInput
+  mediaupload: StringFilterInput
+  mediaurl: StringFilterInput
+  sourceurl: StringFilterInput
+  users_permissions_user: UsersPermissionsUserFiltersInput
+  status: BooleanFilterInput
+  uploadID: StringFilterInput
+  resourcetype: PrerecordedtypeFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [InformationbankmessageFiltersInput]
+  or: [InformationbankmessageFiltersInput]
+  not: InformationbankmessageFiltersInput
+}
+
+input InformationbankmessageInput {
+  title: String
+  description: String
+  minidescription: String
+  tags: String
+  mediaupload: String
+  mediaurl: String
+  sourceurl: String
+  users_permissions_user: ID
+  status: Boolean
+  uploadID: String
+  resourcetype: ID
+}
+
+type Informationbankmessage {
+  title: String
+  description: String
+  minidescription: String
+  tags: String
+  mediaupload: String
+  mediaurl: String
+  sourceurl: String
+  users_permissions_user: UsersPermissionsUserEntityResponse
+  status: Boolean
+  uploadID: String
+  resourcetype: PrerecordedtypeEntityResponse
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type InformationbankmessageEntity {
+  id: ID
+  attributes: Informationbankmessage
+}
+
+type InformationbankmessageEntityResponse {
+  data: InformationbankmessageEntity
+}
+
+type InformationbankmessageEntityResponseCollection {
+  data: [InformationbankmessageEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type InformationbankmessageRelationResponseCollection {
+  data: [InformationbankmessageEntity!]!
+}
+
+enum ENUM_KNOWLEDGEBANK_TAGS {
+  nutrition
+  fitness
+}
+
+input KnowledgebankFiltersInput {
+  id: IDFilterInput
+  title: StringFilterInput
+  maindesc: StringFilterInput
+  sourcelink: StringFilterInput
+  tags: StringFilterInput
+  video_image: StringFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  publishedAt: DateTimeFilterInput
+  and: [KnowledgebankFiltersInput]
+  or: [KnowledgebankFiltersInput]
+  not: KnowledgebankFiltersInput
+}
+
+input KnowledgebankInput {
+  title: String
+  maindesc: String
+  sourcelink: String
+  tags: ENUM_KNOWLEDGEBANK_TAGS
+  video_image: String
+  publishedAt: DateTime
+}
+
+type Knowledgebank {
+  title: String
+  maindesc: String
+  sourcelink: String
+  tags: ENUM_KNOWLEDGEBANK_TAGS
+  video_image: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+type KnowledgebankEntity {
+  id: ID
+  attributes: Knowledgebank
+}
+
+type KnowledgebankEntityResponse {
+  data: KnowledgebankEntity
+}
+
+type KnowledgebankEntityResponseCollection {
+  data: [KnowledgebankEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input LanguageFiltersInput {
+  id: IDFilterInput
+  languages: StringFilterInput
+  code: StringFilterInput
+  users_permissions_user: UsersPermissionsUserFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  publishedAt: DateTimeFilterInput
+  and: [LanguageFiltersInput]
+  or: [LanguageFiltersInput]
+  not: LanguageFiltersInput
+}
+
+input LanguageInput {
+  languages: String
+  code: String
+  users_permissions_user: ID
+  publishedAt: DateTime
+}
+
+type Language {
+  languages: String
+  code: String
+  users_permissions_user: UsersPermissionsUserEntityResponse
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+type LanguageEntity {
+  id: ID
+  attributes: Language
+}
+
+type LanguageEntityResponse {
+  data: LanguageEntity
+}
+
+type LanguageEntityResponseCollection {
+  data: [LanguageEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type LanguageRelationResponseCollection {
+  data: [LanguageEntity!]!
+}
+
+enum ENUM_LEAD_SOURCE {
+  website
+  google
+  my_app
+  word_of_mouth
+}
+
+enum ENUM_LEAD_STATUS {
+  New
+  Interested
+  Follow_up
+  Negative
+  Enrolled
+}
+
+input LeadFiltersInput {
+  id: IDFilterInput
+  Name: StringFilterInput
+  email: StringFilterInput
+  Source: StringFilterInput
+  Status: StringFilterInput
+  date: DateFilterInput
+  Time: TimeFilterInput
+  Notes: StringFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [LeadFiltersInput]
+  or: [LeadFiltersInput]
+  not: LeadFiltersInput
+}
+
+input LeadInput {
+  Name: String
+  email: String
+  Source: ENUM_LEAD_SOURCE
+  Status: ENUM_LEAD_STATUS
+  date: Date
+  Time: Time
+  Notes: String
+}
+
+type Lead {
+  Name: String
+  email: String
+  Source: ENUM_LEAD_SOURCE
+  Status: ENUM_LEAD_STATUS
+  date: Date
+  Time: Time
+  Notes: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type LeadEntity {
+  id: ID
+  attributes: Lead
+}
+
+type LeadEntityResponse {
+  data: LeadEntity
+}
+
+type LeadEntityResponseCollection {
+  data: [LeadEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input MuscleGroupFiltersInput {
+  id: IDFilterInput
+  name: StringFilterInput
+  description: StringFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  publishedAt: DateTimeFilterInput
+  and: [MuscleGroupFiltersInput]
+  or: [MuscleGroupFiltersInput]
+  not: MuscleGroupFiltersInput
+}
+
+input MuscleGroupInput {
+  name: String
+  description: String
+  publishedAt: DateTime
+}
+
+type MuscleGroup {
+  name: String
+  description: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+type MuscleGroupEntity {
+  id: ID
+  attributes: MuscleGroup
+}
+
+type MuscleGroupEntityResponse {
+  data: MuscleGroupEntity
+}
+
+type MuscleGroupEntityResponseCollection {
+  data: [MuscleGroupEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type MuscleGroupRelationResponseCollection {
+  data: [MuscleGroupEntity!]!
+}
+
+input NotificationFiltersInput {
+  id: IDFilterInput
+  title: StringFilterInput
+  description: StringFilterInput
+  minidescription: StringFilterInput
+  status: BooleanFilterInput
+  mediaurl: StringFilterInput
+  users_permissions_user: UsersPermissionsUserFiltersInput
+  prerecordedtrigger: PrerecordedtriggerFiltersInput
+  prerecordedtype: PrerecordedtypeFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [NotificationFiltersInput]
+  or: [NotificationFiltersInput]
+  not: NotificationFiltersInput
+}
+
+input NotificationInput {
+  title: String
+  description: String
+  minidescription: String
+  status: Boolean
+  mediaurl: String
+  users_permissions_user: ID
+  prerecordedtrigger: ID
+  prerecordedtype: ID
+}
+
+type Notification {
+  title: String
+  description: String
+  minidescription: String
+  status: Boolean
+  mediaurl: String
+  users_permissions_user: UsersPermissionsUserEntityResponse
+  prerecordedtrigger: PrerecordedtriggerEntityResponse
+  prerecordedtype: PrerecordedtypeEntityResponse
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type NotificationEntity {
+  id: ID
+  attributes: Notification
+}
+
+type NotificationEntityResponse {
+  data: NotificationEntity
+}
+
+type NotificationEntityResponseCollection {
+  data: [NotificationEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type NotificationRelationResponseCollection {
+  data: [NotificationEntity!]!
+}
+
+input OrganizationFiltersInput {
+  id: IDFilterInput
+  Organization_Name: StringFilterInput
+  Organization_description: StringFilterInput
+  organization_type: OrganizationTypeFiltersInput
+  users: UsersPermissionsUserFiltersInput
+  Org_modules_permission: JSONFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  publishedAt: DateTimeFilterInput
+  and: [OrganizationFiltersInput]
+  or: [OrganizationFiltersInput]
+  not: OrganizationFiltersInput
+}
+
+input OrganizationInput {
+  Organization_Name: String
+  Organization_description: String
+  organization_type: ID
+  users: [ID]
+  Org_modules_permission: JSON
+  publishedAt: DateTime
+}
+
+type Organization {
+  Organization_Name: String
+  Organization_description: String
+  organization_type: OrganizationTypeEntityResponse
+  users(
+    filters: UsersPermissionsUserFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): UsersPermissionsUserRelationResponseCollection
+  Org_modules_permission: JSON
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+type OrganizationEntity {
+  id: ID
+  attributes: Organization
+}
+
+type OrganizationEntityResponse {
+  data: OrganizationEntity
+}
+
+type OrganizationEntityResponseCollection {
+  data: [OrganizationEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type OrganizationRelationResponseCollection {
+  data: [OrganizationEntity!]!
+}
+
+input OrganizationTypeFiltersInput {
+  id: IDFilterInput
+  Org_title_name: StringFilterInput
+  Org_type_description: StringFilterInput
+  organizations: OrganizationFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  publishedAt: DateTimeFilterInput
+  and: [OrganizationTypeFiltersInput]
+  or: [OrganizationTypeFiltersInput]
+  not: OrganizationTypeFiltersInput
+}
+
+input OrganizationTypeInput {
+  Org_title_name: String
+  Org_type_description: String
+  organizations: [ID]
+  publishedAt: DateTime
+}
+
+type OrganizationType {
+  Org_title_name: String
+  Org_type_description: String
+  organizations(
+    filters: OrganizationFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): OrganizationRelationResponseCollection
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+type OrganizationTypeEntity {
+  id: ID
+  attributes: OrganizationType
+}
+
+type OrganizationTypeEntityResponse {
+  data: OrganizationTypeEntity
+}
+
+type OrganizationTypeEntityResponseCollection {
+  data: [OrganizationTypeEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input PrerecordedMessageFiltersInput {
+  id: IDFilterInput
+  Title: StringFilterInput
+  Image_URL: StringFilterInput
+  Video_URL: StringFilterInput
+  Description: StringFilterInput
+  Status: BooleanFilterInput
+  tags: StringFilterInput
+  users_permissions_user: UsersPermissionsUserFiltersInput
+  resourcetype: PrerecordedtypeFiltersInput
+  minidescription: StringFilterInput
+  uploadID: StringFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [PrerecordedMessageFiltersInput]
+  or: [PrerecordedMessageFiltersInput]
+  not: PrerecordedMessageFiltersInput
+}
+
+input PrerecordedMessageInput {
+  Title: String
+  Image_URL: String
+  Video_URL: String
+  Description: String
+  Status: Boolean
+  tags: String
+  users_permissions_user: ID
+  resourcetype: ID
+  minidescription: String
+  uploadID: String
+}
+
+type PrerecordedMessage {
+  Title: String
+  Image_URL: String
+  Video_URL: String
+  Description: String
+  Status: Boolean
+  tags: String
+  users_permissions_user: UsersPermissionsUserEntityResponse
+  resourcetype: PrerecordedtypeEntityResponse
+  minidescription: String
+  uploadID: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type PrerecordedMessageEntity {
+  id: ID
+  attributes: PrerecordedMessage
+}
+
+type PrerecordedMessageEntityResponse {
+  data: PrerecordedMessageEntity
+}
+
+type PrerecordedMessageEntityResponseCollection {
+  data: [PrerecordedMessageEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type PrerecordedMessageRelationResponseCollection {
+  data: [PrerecordedMessageEntity!]!
+}
+
+input PrerecordedtriggerFiltersInput {
+  id: IDFilterInput
+  name: StringFilterInput
+  notifications: NotificationFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  publishedAt: DateTimeFilterInput
+  and: [PrerecordedtriggerFiltersInput]
+  or: [PrerecordedtriggerFiltersInput]
+  not: PrerecordedtriggerFiltersInput
+}
+
+input PrerecordedtriggerInput {
+  name: String
+  notifications: [ID]
+  publishedAt: DateTime
+}
+
+type Prerecordedtrigger {
+  name: String
+  notifications(
+    filters: NotificationFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): NotificationRelationResponseCollection
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+type PrerecordedtriggerEntity {
+  id: ID
+  attributes: Prerecordedtrigger
+}
+
+type PrerecordedtriggerEntityResponse {
+  data: PrerecordedtriggerEntity
+}
+
+type PrerecordedtriggerEntityResponseCollection {
+  data: [PrerecordedtriggerEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input PrerecordedtypeFiltersInput {
+  id: IDFilterInput
+  name: StringFilterInput
+  notifications: NotificationFiltersInput
+  informationbankmessages: InformationbankmessageFiltersInput
+  prerecorded_messages: PrerecordedMessageFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  publishedAt: DateTimeFilterInput
+  and: [PrerecordedtypeFiltersInput]
+  or: [PrerecordedtypeFiltersInput]
+  not: PrerecordedtypeFiltersInput
+}
+
+input PrerecordedtypeInput {
+  name: String
+  notifications: [ID]
+  informationbankmessages: [ID]
+  prerecorded_messages: [ID]
+  publishedAt: DateTime
+}
+
+type Prerecordedtype {
+  name: String
+  notifications(
+    filters: NotificationFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): NotificationRelationResponseCollection
+  informationbankmessages(
+    filters: InformationbankmessageFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): InformationbankmessageRelationResponseCollection
+  prerecorded_messages(
+    filters: PrerecordedMessageFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): PrerecordedMessageRelationResponseCollection
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+type PrerecordedtypeEntity {
+  id: ID
+  attributes: Prerecordedtype
+}
+
+type PrerecordedtypeEntityResponse {
+  data: PrerecordedtypeEntity
+}
+
+type PrerecordedtypeEntityResponseCollection {
+  data: [PrerecordedtypeEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input ProgramManagerFiltersInput {
+  id: IDFilterInput
+  fitnesspackages: FitnesspackageFiltersInput
+  fitnessprograms: FitnessprogramFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [ProgramManagerFiltersInput]
+  or: [ProgramManagerFiltersInput]
+  not: ProgramManagerFiltersInput
+}
+
+input ProgramManagerInput {
+  fitnesspackages: [ID]
+  fitnessprograms: [ID]
+}
+
+type ProgramManager {
+  fitnesspackages(
+    filters: FitnesspackageFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): FitnesspackageRelationResponseCollection
+  fitnessprograms(
+    filters: FitnessprogramFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): FitnessprogramRelationResponseCollection
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type ProgramManagerEntity {
+  id: ID
+  attributes: ProgramManager
+}
+
+type ProgramManagerEntityResponse {
+  data: ProgramManagerEntity
+}
+
+type ProgramManagerEntityResponseCollection {
+  data: [ProgramManagerEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type ProgramManagerRelationResponseCollection {
+  data: [ProgramManagerEntity!]!
+}
+
+input RatingFiltersInput {
+  id: IDFilterInput
+  type: StringFilterInput
+  resource_id: StringFilterInput
+  users_permissions_user: UsersPermissionsUserFiltersInput
+  rating: IntFilterInput
+  max_rating: IntFilterInput
+  resource_type: StringFilterInput
+  rating_scale: RatingScaleFiltersInput
+  target_user: UsersPermissionsUserFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [RatingFiltersInput]
+  or: [RatingFiltersInput]
+  not: RatingFiltersInput
+}
+
+input RatingInput {
+  type: String
+  resource_id: String
+  users_permissions_user: ID
+  rating: Int
+  max_rating: Int
+  resource_type: String
+  rating_scale: ID
+  target_user: ID
+}
+
+type Rating {
+  type: String
+  resource_id: String
+  users_permissions_user: UsersPermissionsUserEntityResponse
+  rating: Int
+  max_rating: Int
+  resource_type: String
+  rating_scale: RatingScaleEntityResponse
+  target_user: UsersPermissionsUserEntityResponse
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type RatingEntity {
+  id: ID
+  attributes: Rating
+}
+
+type RatingEntityResponse {
+  data: RatingEntity
+}
+
+type RatingEntityResponseCollection {
+  data: [RatingEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type RatingRelationResponseCollection {
+  data: [RatingEntity!]!
+}
+
+input RatingScaleFiltersInput {
+  id: IDFilterInput
+  Type: StringFilterInput
+  items: JSONFilterInput
+  item_type: StringFilterInput
+  ratings: RatingFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [RatingScaleFiltersInput]
+  or: [RatingScaleFiltersInput]
+  not: RatingScaleFiltersInput
+}
+
+input RatingScaleInput {
+  Type: String
+  items: JSON
+  item_type: String
+  ratings: [ID]
+}
+
+type RatingScale {
+  Type: String
+  items: JSON
+  item_type: String
+  ratings(
+    filters: RatingFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): RatingRelationResponseCollection
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type RatingScaleEntity {
+  id: ID
+  attributes: RatingScale
+}
+
+type RatingScaleEntityResponse {
+  data: RatingScaleEntity
+}
+
+type RatingScaleEntityResponseCollection {
+  data: [RatingScaleEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+enum ENUM_SAPIENPRICING_MODE {
+  Online
+  Offline
+}
+
+input SapienPricingFiltersInput {
+  id: IDFilterInput
+  mode: StringFilterInput
+  mrp: FloatFilterInput
+  fitness_package_type: FitnessPackageTypeFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  publishedAt: DateTimeFilterInput
+  and: [SapienPricingFiltersInput]
+  or: [SapienPricingFiltersInput]
+  not: SapienPricingFiltersInput
+}
+
+input SapienPricingInput {
+  mode: ENUM_SAPIENPRICING_MODE
+  mrp: Float
+  fitness_package_type: ID
+  publishedAt: DateTime
+}
+
+type SapienPricing {
+  mode: ENUM_SAPIENPRICING_MODE
+  mrp: Float
+  fitness_package_type: FitnessPackageTypeEntityResponse
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+type SapienPricingEntity {
+  id: ID
+  attributes: SapienPricing
+}
+
+type SapienPricingEntityResponse {
+  data: SapienPricingEntity
+}
+
+type SapienPricingEntityResponseCollection {
+  data: [SapienPricingEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type SapienPricingRelationResponseCollection {
+  data: [SapienPricingEntity!]!
+}
+
+enum ENUM_SUGGESTEDPRICING_MODE {
+  Online
+  Offline
+}
+
+input SuggestedPricingFiltersInput {
+  id: IDFilterInput
+  fitness_package_type: FitnessPackageTypeFiltersInput
+  users_permissions_users: UsersPermissionsUserFiltersInput
+  Mode: StringFilterInput
+  mrp: FloatFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [SuggestedPricingFiltersInput]
+  or: [SuggestedPricingFiltersInput]
+  not: SuggestedPricingFiltersInput
+}
+
+input SuggestedPricingInput {
+  fitness_package_type: ID
+  users_permissions_users: [ID]
+  Mode: ENUM_SUGGESTEDPRICING_MODE
+  mrp: Float
+}
+
+type SuggestedPricing {
+  fitness_package_type: FitnessPackageTypeEntityResponse
+  users_permissions_users(
+    filters: UsersPermissionsUserFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): UsersPermissionsUserRelationResponseCollection
+  Mode: ENUM_SUGGESTEDPRICING_MODE
+  mrp: Float
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type SuggestedPricingEntity {
+  id: ID
+  attributes: SuggestedPricing
+}
+
+type SuggestedPricingEntityResponse {
+  data: SuggestedPricingEntity
+}
+
+type SuggestedPricingEntityResponseCollection {
+  data: [SuggestedPricingEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type SuggestedPricingRelationResponseCollection {
+  data: [SuggestedPricingEntity!]!
+}
+
+input TimezoneFiltersInput {
+  id: IDFilterInput
+  name: StringFilterInput
+  time: StringFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  publishedAt: DateTimeFilterInput
+  and: [TimezoneFiltersInput]
+  or: [TimezoneFiltersInput]
+  not: TimezoneFiltersInput
+}
+
+input TimezoneInput {
+  name: String
+  time: String
+  publishedAt: DateTime
+}
+
+type Timezone {
+  name: String
+  time: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+type TimezoneEntity {
+  id: ID
+  attributes: Timezone
+}
+
+type TimezoneEntityResponse {
+  data: TimezoneEntity
+}
+
+type TimezoneEntityResponseCollection {
+  data: [TimezoneEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input UpiDetailsChangemakerFiltersInput {
+  id: IDFilterInput
+  Full_Name: StringFilterInput
+  phone_number: StringFilterInput
+  UPI_ID: StringFilterInput
+  users_permissions_user: UsersPermissionsUserFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  publishedAt: DateTimeFilterInput
+  and: [UpiDetailsChangemakerFiltersInput]
+  or: [UpiDetailsChangemakerFiltersInput]
+  not: UpiDetailsChangemakerFiltersInput
+}
+
+input UpiDetailsChangemakerInput {
+  Full_Name: String
+  phone_number: String
+  UPI_ID: String
+  users_permissions_user: ID
+  publishedAt: DateTime
+}
+
+type UpiDetailsChangemaker {
+  Full_Name: String
+  phone_number: String
+  UPI_ID: String
+  users_permissions_user: UsersPermissionsUserEntityResponse
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+type UpiDetailsChangemakerEntity {
+  id: ID
+  attributes: UpiDetailsChangemaker
+}
+
+type UpiDetailsChangemakerEntityResponse {
+  data: UpiDetailsChangemakerEntity
+}
+
+type UpiDetailsChangemakerEntityResponseCollection {
+  data: [UpiDetailsChangemakerEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type UpiDetailsChangemakerRelationResponseCollection {
+  data: [UpiDetailsChangemakerEntity!]!
+}
+
+input UserGoalFiltersInput {
+  id: IDFilterInput
+  users_permissions_user: UsersPermissionsUserFiltersInput
+  goals: GoalFiltersInput
+  assigned_by: UsersPermissionsUserFiltersInput
+  start: DateFilterInput
+  end: DateFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [UserGoalFiltersInput]
+  or: [UserGoalFiltersInput]
+  not: UserGoalFiltersInput
+}
+
+input UserGoalInput {
+  users_permissions_user: ID
+  goals: [ID]
+  assigned_by: [ID]
+  start: Date
+  end: Date
+}
+
+type UserGoal {
+  users_permissions_user: UsersPermissionsUserEntityResponse
+  goals(
+    filters: GoalFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): GoalRelationResponseCollection
+  assigned_by(
+    filters: UsersPermissionsUserFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): UsersPermissionsUserRelationResponseCollection
+  start: Date
+  end: Date
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type UserGoalEntity {
+  id: ID
+  attributes: UserGoal
+}
+
+type UserGoalEntityResponse {
+  data: UserGoalEntity
+}
+
+type UserGoalEntityResponseCollection {
+  data: [UserGoalEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type UserGoalRelationResponseCollection {
+  data: [UserGoalEntity!]!
+}
+
+input UserPackageSuggestionFiltersInput {
+  id: IDFilterInput
+  users_permissions_user: UsersPermissionsUserFiltersInput
+  fitnesspackage: FitnesspackageFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [UserPackageSuggestionFiltersInput]
+  or: [UserPackageSuggestionFiltersInput]
+  not: UserPackageSuggestionFiltersInput
+}
+
+input UserPackageSuggestionInput {
+  users_permissions_user: ID
+  fitnesspackage: ID
+}
+
+type UserPackageSuggestion {
+  users_permissions_user: UsersPermissionsUserEntityResponse
+  fitnesspackage: FitnesspackageEntityResponse
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type UserPackageSuggestionEntity {
+  id: ID
+  attributes: UserPackageSuggestion
+}
+
+type UserPackageSuggestionEntityResponse {
+  data: UserPackageSuggestionEntity
+}
+
+type UserPackageSuggestionEntityResponseCollection {
+  data: [UserPackageSuggestionEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type UserPackageSuggestionRelationResponseCollection {
+  data: [UserPackageSuggestionEntity!]!
+}
+
+enum ENUM_VOUCHER_STATUS {
+  Active
+  Expired
+  Disabled
+}
+
+input VoucherFiltersInput {
+  id: IDFilterInput
+  voucher_name: StringFilterInput
+  discount_percentage: FloatFilterInput
+  expiry_date: DateTimeFilterInput
+  Start_date: DateTimeFilterInput
+  Usage_restriction: IntFilterInput
+  users_permissions_user: UsersPermissionsUserFiltersInput
+  Status: StringFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [VoucherFiltersInput]
+  or: [VoucherFiltersInput]
+  not: VoucherFiltersInput
+}
+
+input VoucherInput {
+  voucher_name: String
+  discount_percentage: Float
+  expiry_date: DateTime
+  Start_date: DateTime
+  Usage_restriction: Int
+  users_permissions_user: ID
+  Status: ENUM_VOUCHER_STATUS
+}
+
+type Voucher {
+  voucher_name: String
+  discount_percentage: Float
+  expiry_date: DateTime
+  Start_date: DateTime
+  Usage_restriction: Int
+  users_permissions_user: UsersPermissionsUserEntityResponse
+  Status: ENUM_VOUCHER_STATUS
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type VoucherEntity {
+  id: ID
+  attributes: Voucher
+}
+
+type VoucherEntityResponse {
+  data: VoucherEntity
+}
+
+type VoucherEntityResponseCollection {
+  data: [VoucherEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type VoucherRelationResponseCollection {
+  data: [VoucherEntity!]!
+}
+
+input WebsiteContactFormFiltersInput {
+  id: IDFilterInput
+  users_permissions_user: UsersPermissionsUserFiltersInput
+  Details: JSONFilterInput
+  isSeen: BooleanFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [WebsiteContactFormFiltersInput]
+  or: [WebsiteContactFormFiltersInput]
+  not: WebsiteContactFormFiltersInput
+}
+
+input WebsiteContactFormInput {
+  users_permissions_user: ID
+  Details: JSON
+  isSeen: Boolean
+}
+
+type WebsiteContactForm {
+  users_permissions_user: UsersPermissionsUserEntityResponse
+  Details: JSON
+  isSeen: Boolean
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type WebsiteContactFormEntity {
+  id: ID
+  attributes: WebsiteContactForm
+}
+
+type WebsiteContactFormEntityResponse {
+  data: WebsiteContactFormEntity
+}
+
+type WebsiteContactFormEntityResponseCollection {
+  data: [WebsiteContactFormEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type WebsiteContactFormRelationResponseCollection {
+  data: [WebsiteContactFormEntity!]!
+}
+
+input WebsiteDataFiltersInput {
+  id: IDFilterInput
+  users_permissions_user: UsersPermissionsUserFiltersInput
+  form_data: JSONFilterInput
+  website_template: WebsiteTemplateFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [WebsiteDataFiltersInput]
+  or: [WebsiteDataFiltersInput]
+  not: WebsiteDataFiltersInput
+}
+
+input WebsiteDataInput {
+  users_permissions_user: ID
+  form_data: JSON
+  website_template: ID
+}
+
+type WebsiteData {
+  users_permissions_user: UsersPermissionsUserEntityResponse
+  form_data: JSON
+  website_template: WebsiteTemplateEntityResponse
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type WebsiteDataEntity {
+  id: ID
+  attributes: WebsiteData
+}
+
+type WebsiteDataEntityResponse {
+  data: WebsiteDataEntity
+}
+
+type WebsiteDataEntityResponseCollection {
+  data: [WebsiteDataEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type WebsiteDataRelationResponseCollection {
+  data: [WebsiteDataEntity!]!
+}
+
+input WebsiteTemplateFiltersInput {
+  id: IDFilterInput
+  template_name: StringFilterInput
+  schema_json: JSONFilterInput
+  form_json: JSONFilterInput
+  published: BooleanFilterInput
+  Stepper_Title: JSONFilterInput
+  website_data: WebsiteDataFiltersInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [WebsiteTemplateFiltersInput]
+  or: [WebsiteTemplateFiltersInput]
+  not: WebsiteTemplateFiltersInput
+}
+
+input WebsiteTemplateInput {
+  template_name: String
+  schema_json: JSON
+  form_json: JSON
+  published: Boolean
+  Stepper_Title: JSON
+  website_data: [ID]
+}
+
+type WebsiteTemplate {
+  template_name: String
+  schema_json: JSON
+  form_json: JSON
+  published: Boolean
+  Stepper_Title: JSON
+  website_data(
+    filters: WebsiteDataFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): WebsiteDataRelationResponseCollection
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type WebsiteTemplateEntity {
+  id: ID
+  attributes: WebsiteTemplate
+}
+
+type WebsiteTemplateEntityResponse {
+  data: WebsiteTemplateEntity
+}
+
+type WebsiteTemplateEntityResponseCollection {
+  data: [WebsiteTemplateEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+enum ENUM_WORKOUT_INTENSITY {
+  Low
+  Medium
+  High
+}
+
+enum ENUM_WORKOUT_LEVEL {
+  Beginner
+  Intermediate
+  Advanced
+  None
+}
+
+input WorkoutFiltersInput {
+  id: IDFilterInput
+  workouttitle: StringFilterInput
+  intensity: StringFilterInput
+  level: StringFilterInput
+  fitnessdisciplines: FitnessdisciplineFiltersInput
+  calories: IntFilterInput
+  muscle_groups: MuscleGroupFiltersInput
+  warmup: JSONFilterInput
+  mainmovement: JSONFilterInput
+  cooldown: JSONFilterInput
+  About: StringFilterInput
+  users_permissions_user: UsersPermissionsUserFiltersInput
+  equipment_lists: EquipmentListFiltersInput
+  Benifits: StringFilterInput
+  workout_URL: StringFilterInput
+  workout_text: StringFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [WorkoutFiltersInput]
+  or: [WorkoutFiltersInput]
+  not: WorkoutFiltersInput
+}
+
+input WorkoutInput {
+  workouttitle: String
+  intensity: ENUM_WORKOUT_INTENSITY
+  level: ENUM_WORKOUT_LEVEL
+  fitnessdisciplines: [ID]
+  calories: Int
+  muscle_groups: [ID]
+  warmup: JSON
+  mainmovement: JSON
+  cooldown: JSON
+  About: String
+  users_permissions_user: ID
+  equipment_lists: [ID]
+  Benifits: String
+  workout_URL: String
+  workout_text: String
+}
+
+type Workout {
+  workouttitle: String
+  intensity: ENUM_WORKOUT_INTENSITY
+  level: ENUM_WORKOUT_LEVEL
+  fitnessdisciplines(
+    filters: FitnessdisciplineFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): FitnessdisciplineRelationResponseCollection
+  calories: Int
+  muscle_groups(
+    filters: MuscleGroupFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): MuscleGroupRelationResponseCollection
+  warmup: JSON
+  mainmovement: JSON
+  cooldown: JSON
+  About: String
+  users_permissions_user: UsersPermissionsUserEntityResponse
+  equipment_lists(
+    filters: EquipmentListFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): EquipmentListRelationResponseCollection
+  Benifits: String
+  workout_URL: String
+  workout_text: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type WorkoutEntity {
+  id: ID
+  attributes: Workout
+}
+
+type WorkoutEntityResponse {
+  data: WorkoutEntity
+}
+
+type WorkoutEntityResponseCollection {
+  data: [WorkoutEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+type WorkoutRelationResponseCollection {
+  data: [WorkoutEntity!]!
+}
+
+union GenericMorph =
+    ComponentWhyHow
+  | UploadFile
+  | I18NLocale
+  | UsersPermissionsPermission
+  | UsersPermissionsRole
+  | UsersPermissionsUser
+  | Activitie
+  | Address
+  | BankDetail
+  | BookingConfig
+  | Changemaker
+  | ChangemakerAvailabilty
+  | ChangemakerHoliday
+  | ChangemakerWorkhour
+  | ChatAttachment
+  | ChatGroup
+  | ChatGroupParticipant
+  | ChatMessage
+  | ChatMessageReciver
+  | ChatRequest
+  | ClientBooking
+  | ClientPackage
+  | ContactSapiensystem
+  | Designation
+  | EducationalDetail
+  | EquipmentList
+  | Exercise
+  | FaqsSapienlive
+  | FaqsSapiensystem
+  | FeedbackComment
+  | FeedbackNote
+  | FitnessMode
+  | FitnessPackageType
+  | Fitnessdiscipline
+  | Fitnesspackage
+  | Fitnessprogram
+  | FitnesssProgramTemplate
+  | Goal
+  | HowItWorks
+  | Informationbankmessage
+  | Knowledgebank
+  | Language
+  | Lead
+  | MuscleGroup
+  | Notification
+  | Organization
+  | OrganizationType
+  | PrerecordedMessage
+  | Prerecordedtrigger
+  | Prerecordedtype
+  | ProgramManager
+  | Rating
+  | RatingScale
+  | SapienPricing
+  | SuggestedPricing
+  | Timezone
+  | UpiDetailsChangemaker
+  | UserGoal
+  | UserPackageSuggestion
+  | Voucher
+  | WebsiteContactForm
+  | WebsiteData
+  | WebsiteTemplate
+  | Workout
+
+input FileInfoInput {
+  name: String
+  alternativeText: String
+  caption: String
+}
+
+type UsersPermissionsMe {
+  id: ID!
+  username: String!
+  email: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsMeRole
+}
+
+type UsersPermissionsMeRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+}
+
+input UsersPermissionsRegisterInput {
+  username: String!
+  email: String!
+  password: String!
+}
+
+input UsersPermissionsLoginInput {
+  identifier: String!
+  password: String!
+  provider: String! = "local"
+}
+
+type UsersPermissionsPasswordPayload {
+  ok: Boolean!
+}
+
+type UsersPermissionsLoginPayload {
+  jwt: String
+  user: UsersPermissionsMe!
+}
+
+type UsersPermissionsCreateRolePayload {
+  ok: Boolean!
+}
+
+type UsersPermissionsUpdateRolePayload {
+  ok: Boolean!
+}
+
+type UsersPermissionsDeleteRolePayload {
+  ok: Boolean!
+}
+
+input PaginationArg {
+  page: Int
+  pageSize: Int
+  start: Int
+  limit: Int
+}
+
+type Query {
+  uploadFile(id: ID): UploadFileEntityResponse
+  uploadFiles(
+    filters: UploadFileFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): UploadFileEntityResponseCollection
+  i18NLocale(id: ID): I18NLocaleEntityResponse
+  i18NLocales(
+    filters: I18NLocaleFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): I18NLocaleEntityResponseCollection
+  usersPermissionsRole(id: ID): UsersPermissionsRoleEntityResponse
+  usersPermissionsRoles(
+    filters: UsersPermissionsRoleFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): UsersPermissionsRoleEntityResponseCollection
+  usersPermissionsUser(id: ID): UsersPermissionsUserEntityResponse
+  usersPermissionsUsers(
+    filters: UsersPermissionsUserFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): UsersPermissionsUserEntityResponseCollection
+  activitie(id: ID): ActivitieEntityResponse
+  activities(
+    filters: ActivitieFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): ActivitieEntityResponseCollection
+  address(id: ID): AddressEntityResponse
+  addresses(
+    filters: AddressFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): AddressEntityResponseCollection
+  bankDetail(id: ID): BankDetailEntityResponse
+  bankDetails(
+    filters: BankDetailFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): BankDetailEntityResponseCollection
+  bookingConfig(id: ID): BookingConfigEntityResponse
+  bookingConfigs(
+    filters: BookingConfigFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): BookingConfigEntityResponseCollection
+  changemaker(id: ID): ChangemakerEntityResponse
+  changemakers(
+    filters: ChangemakerFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): ChangemakerEntityResponseCollection
+  changemakerAvailabilty(id: ID): ChangemakerAvailabiltyEntityResponse
+  changemakerAvailabilties(
+    filters: ChangemakerAvailabiltyFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): ChangemakerAvailabiltyEntityResponseCollection
+  changemakerHoliday(id: ID): ChangemakerHolidayEntityResponse
+  changemakerHolidays(
+    filters: ChangemakerHolidayFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): ChangemakerHolidayEntityResponseCollection
+  changemakerWorkhour(id: ID): ChangemakerWorkhourEntityResponse
+  changemakerWorkhours(
+    filters: ChangemakerWorkhourFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): ChangemakerWorkhourEntityResponseCollection
+  chatAttachment(id: ID): ChatAttachmentEntityResponse
+  chatAttachments(
+    filters: ChatAttachmentFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): ChatAttachmentEntityResponseCollection
+  chatGroup(id: ID): ChatGroupEntityResponse
+  chatGroups(
+    filters: ChatGroupFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): ChatGroupEntityResponseCollection
+  chatGroupParticipant(id: ID): ChatGroupParticipantEntityResponse
+  chatGroupParticipants(
+    filters: ChatGroupParticipantFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): ChatGroupParticipantEntityResponseCollection
+  chatMessage(id: ID): ChatMessageEntityResponse
+  chatMessages(
+    filters: ChatMessageFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): ChatMessageEntityResponseCollection
+  chatMessageReciver(id: ID): ChatMessageReciverEntityResponse
+  chatMessageRecivers(
+    filters: ChatMessageReciverFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): ChatMessageReciverEntityResponseCollection
+  chatRequest(id: ID): ChatRequestEntityResponse
+  chatRequests(
+    filters: ChatRequestFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): ChatRequestEntityResponseCollection
+  clientBooking(id: ID): ClientBookingEntityResponse
+  clientBookings(
+    filters: ClientBookingFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): ClientBookingEntityResponseCollection
+  clientPackage(id: ID): ClientPackageEntityResponse
+  clientPackages(
+    filters: ClientPackageFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): ClientPackageEntityResponseCollection
+  contactSapiensystem(id: ID): ContactSapiensystemEntityResponse
+  contactSapiensystems(
+    filters: ContactSapiensystemFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): ContactSapiensystemEntityResponseCollection
+  designation(id: ID): DesignationEntityResponse
+  designations(
+    filters: DesignationFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): DesignationEntityResponseCollection
+  educationalDetail(id: ID): EducationalDetailEntityResponse
+  educationalDetails(
+    filters: EducationalDetailFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): EducationalDetailEntityResponseCollection
+  equipmentList(id: ID): EquipmentListEntityResponse
+  equipmentLists(
+    filters: EquipmentListFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): EquipmentListEntityResponseCollection
+  exercise(id: ID): ExerciseEntityResponse
+  exercises(
+    filters: ExerciseFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): ExerciseEntityResponseCollection
+  faqsSapienlive(id: ID): FaqsSapienliveEntityResponse
+  faqsSapienlives(
+    filters: FaqsSapienliveFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): FaqsSapienliveEntityResponseCollection
+  faqsSapiensystem(id: ID): FaqsSapiensystemEntityResponse
+  faqsSapiensystems(
+    filters: FaqsSapiensystemFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): FaqsSapiensystemEntityResponseCollection
+  feedbackComment(id: ID): FeedbackCommentEntityResponse
+  feedbackComments(
+    filters: FeedbackCommentFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): FeedbackCommentEntityResponseCollection
+  feedbackNote(id: ID): FeedbackNoteEntityResponse
+  feedbackNotes(
+    filters: FeedbackNoteFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): FeedbackNoteEntityResponseCollection
+  fitnessMode(id: ID): FitnessModeEntityResponse
+  fitnessModes(
+    filters: FitnessModeFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): FitnessModeEntityResponseCollection
+  fitnessPackageType(id: ID): FitnessPackageTypeEntityResponse
+  fitnessPackageTypes(
+    filters: FitnessPackageTypeFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): FitnessPackageTypeEntityResponseCollection
+  fitnessdiscipline(id: ID): FitnessdisciplineEntityResponse
+  fitnessdisciplines(
+    filters: FitnessdisciplineFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): FitnessdisciplineEntityResponseCollection
+  fitnesspackage(id: ID): FitnesspackageEntityResponse
+  fitnesspackages(
+    filters: FitnesspackageFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): FitnesspackageEntityResponseCollection
+  fitnessprogram(id: ID): FitnessprogramEntityResponse
+  fitnessprograms(
+    filters: FitnessprogramFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): FitnessprogramEntityResponseCollection
+  fitnesssProgramTemplate(id: ID): FitnesssProgramTemplateEntityResponse
+  fitnesssProgramTemplates(
+    filters: FitnesssProgramTemplateFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): FitnesssProgramTemplateEntityResponseCollection
+  goal(id: ID): GoalEntityResponse
+  goals(
+    filters: GoalFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): GoalEntityResponseCollection
+  howItWorks(id: ID): HowItWorksEntityResponse
+  howItWork(
+    filters: HowItWorksFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): HowItWorksEntityResponseCollection
+  informationbankmessage(id: ID): InformationbankmessageEntityResponse
+  informationbankmessages(
+    filters: InformationbankmessageFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): InformationbankmessageEntityResponseCollection
+  knowledgebank(id: ID): KnowledgebankEntityResponse
+  knowledgebanks(
+    filters: KnowledgebankFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): KnowledgebankEntityResponseCollection
+  language(id: ID): LanguageEntityResponse
+  languages(
+    filters: LanguageFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): LanguageEntityResponseCollection
+  lead(id: ID): LeadEntityResponse
+  leads(
+    filters: LeadFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): LeadEntityResponseCollection
+  muscleGroup(id: ID): MuscleGroupEntityResponse
+  muscleGroups(
+    filters: MuscleGroupFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): MuscleGroupEntityResponseCollection
+  notification(id: ID): NotificationEntityResponse
+  notifications(
+    filters: NotificationFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): NotificationEntityResponseCollection
+  organization(id: ID): OrganizationEntityResponse
+  organizations(
+    filters: OrganizationFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): OrganizationEntityResponseCollection
+  organizationType(id: ID): OrganizationTypeEntityResponse
+  organizationTypes(
+    filters: OrganizationTypeFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): OrganizationTypeEntityResponseCollection
+  prerecordedMessage(id: ID): PrerecordedMessageEntityResponse
+  prerecordedMessages(
+    filters: PrerecordedMessageFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): PrerecordedMessageEntityResponseCollection
+  prerecordedtrigger(id: ID): PrerecordedtriggerEntityResponse
+  prerecordedtriggers(
+    filters: PrerecordedtriggerFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): PrerecordedtriggerEntityResponseCollection
+  prerecordedtype(id: ID): PrerecordedtypeEntityResponse
+  prerecordedtypes(
+    filters: PrerecordedtypeFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): PrerecordedtypeEntityResponseCollection
+  programManager(id: ID): ProgramManagerEntityResponse
+  programManagers(
+    filters: ProgramManagerFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): ProgramManagerEntityResponseCollection
+  rating(id: ID): RatingEntityResponse
+  ratings(
+    filters: RatingFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): RatingEntityResponseCollection
+  ratingScale(id: ID): RatingScaleEntityResponse
+  ratingScales(
+    filters: RatingScaleFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): RatingScaleEntityResponseCollection
+  sapienPricing(id: ID): SapienPricingEntityResponse
+  sapienPricings(
+    filters: SapienPricingFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): SapienPricingEntityResponseCollection
+  suggestedPricing(id: ID): SuggestedPricingEntityResponse
+  suggestedPricings(
+    filters: SuggestedPricingFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): SuggestedPricingEntityResponseCollection
+  timezone(id: ID): TimezoneEntityResponse
+  timezones(
+    filters: TimezoneFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): TimezoneEntityResponseCollection
+  upiDetailsChangemaker(id: ID): UpiDetailsChangemakerEntityResponse
+  upiDetailsChangemakers(
+    filters: UpiDetailsChangemakerFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    publicationState: PublicationState = LIVE
+  ): UpiDetailsChangemakerEntityResponseCollection
+  userGoal(id: ID): UserGoalEntityResponse
+  userGoals(
+    filters: UserGoalFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): UserGoalEntityResponseCollection
+  userPackageSuggestion(id: ID): UserPackageSuggestionEntityResponse
+  userPackageSuggestions(
+    filters: UserPackageSuggestionFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): UserPackageSuggestionEntityResponseCollection
+  voucher(id: ID): VoucherEntityResponse
+  vouchers(
+    filters: VoucherFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): VoucherEntityResponseCollection
+  websiteContactForm(id: ID): WebsiteContactFormEntityResponse
+  websiteContactForms(
+    filters: WebsiteContactFormFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): WebsiteContactFormEntityResponseCollection
+  websiteData(id: ID): WebsiteDataEntityResponse
+  websiteDatas(
+    filters: WebsiteDataFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): WebsiteDataEntityResponseCollection
+  websiteTemplate(id: ID): WebsiteTemplateEntityResponse
+  websiteTemplates(
+    filters: WebsiteTemplateFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): WebsiteTemplateEntityResponseCollection
+  workout(id: ID): WorkoutEntityResponse
+  workouts(
+    filters: WorkoutFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): WorkoutEntityResponseCollection
+  me: UsersPermissionsMe
+}
+
+type Mutation {
+  createUploadFile(data: UploadFileInput!): UploadFileEntityResponse
+  updateUploadFile(id: ID!, data: UploadFileInput!): UploadFileEntityResponse
+  deleteUploadFile(id: ID!): UploadFileEntityResponse
+  createActivitie(data: ActivitieInput!): ActivitieEntityResponse
+  updateActivitie(id: ID!, data: ActivitieInput!): ActivitieEntityResponse
+  deleteActivitie(id: ID!): ActivitieEntityResponse
+  createAddress(data: AddressInput!): AddressEntityResponse
+  updateAddress(id: ID!, data: AddressInput!): AddressEntityResponse
+  deleteAddress(id: ID!): AddressEntityResponse
+  createBankDetail(data: BankDetailInput!): BankDetailEntityResponse
+  updateBankDetail(id: ID!, data: BankDetailInput!): BankDetailEntityResponse
+  deleteBankDetail(id: ID!): BankDetailEntityResponse
+  createBookingConfig(data: BookingConfigInput!): BookingConfigEntityResponse
+  updateBookingConfig(
+    id: ID!
+    data: BookingConfigInput!
+  ): BookingConfigEntityResponse
+  deleteBookingConfig(id: ID!): BookingConfigEntityResponse
+  createChangemaker(data: ChangemakerInput!): ChangemakerEntityResponse
+  updateChangemaker(id: ID!, data: ChangemakerInput!): ChangemakerEntityResponse
+  deleteChangemaker(id: ID!): ChangemakerEntityResponse
+  createChangemakerAvailabilty(
+    data: ChangemakerAvailabiltyInput!
+  ): ChangemakerAvailabiltyEntityResponse
+  updateChangemakerAvailabilty(
+    id: ID!
+    data: ChangemakerAvailabiltyInput!
+  ): ChangemakerAvailabiltyEntityResponse
+  deleteChangemakerAvailabilty(id: ID!): ChangemakerAvailabiltyEntityResponse
+  createChangemakerHoliday(
+    data: ChangemakerHolidayInput!
+  ): ChangemakerHolidayEntityResponse
+  updateChangemakerHoliday(
+    id: ID!
+    data: ChangemakerHolidayInput!
+  ): ChangemakerHolidayEntityResponse
+  deleteChangemakerHoliday(id: ID!): ChangemakerHolidayEntityResponse
+  createChangemakerWorkhour(
+    data: ChangemakerWorkhourInput!
+  ): ChangemakerWorkhourEntityResponse
+  updateChangemakerWorkhour(
+    id: ID!
+    data: ChangemakerWorkhourInput!
+  ): ChangemakerWorkhourEntityResponse
+  deleteChangemakerWorkhour(id: ID!): ChangemakerWorkhourEntityResponse
+  createChatAttachment(data: ChatAttachmentInput!): ChatAttachmentEntityResponse
+  updateChatAttachment(
+    id: ID!
+    data: ChatAttachmentInput!
+  ): ChatAttachmentEntityResponse
+  deleteChatAttachment(id: ID!): ChatAttachmentEntityResponse
+  createChatGroup(data: ChatGroupInput!): ChatGroupEntityResponse
+  updateChatGroup(id: ID!, data: ChatGroupInput!): ChatGroupEntityResponse
+  deleteChatGroup(id: ID!): ChatGroupEntityResponse
+  createChatGroupParticipant(
+    data: ChatGroupParticipantInput!
+  ): ChatGroupParticipantEntityResponse
+  updateChatGroupParticipant(
+    id: ID!
+    data: ChatGroupParticipantInput!
+  ): ChatGroupParticipantEntityResponse
+  deleteChatGroupParticipant(id: ID!): ChatGroupParticipantEntityResponse
+  createChatMessage(data: ChatMessageInput!): ChatMessageEntityResponse
+  updateChatMessage(id: ID!, data: ChatMessageInput!): ChatMessageEntityResponse
+  deleteChatMessage(id: ID!): ChatMessageEntityResponse
+  createChatMessageReciver(
+    data: ChatMessageReciverInput!
+  ): ChatMessageReciverEntityResponse
+  updateChatMessageReciver(
+    id: ID!
+    data: ChatMessageReciverInput!
+  ): ChatMessageReciverEntityResponse
+  deleteChatMessageReciver(id: ID!): ChatMessageReciverEntityResponse
+  createChatRequest(data: ChatRequestInput!): ChatRequestEntityResponse
+  updateChatRequest(id: ID!, data: ChatRequestInput!): ChatRequestEntityResponse
+  deleteChatRequest(id: ID!): ChatRequestEntityResponse
+  createClientBooking(data: ClientBookingInput!): ClientBookingEntityResponse
+  updateClientBooking(
+    id: ID!
+    data: ClientBookingInput!
+  ): ClientBookingEntityResponse
+  deleteClientBooking(id: ID!): ClientBookingEntityResponse
+  createClientPackage(data: ClientPackageInput!): ClientPackageEntityResponse
+  updateClientPackage(
+    id: ID!
+    data: ClientPackageInput!
+  ): ClientPackageEntityResponse
+  deleteClientPackage(id: ID!): ClientPackageEntityResponse
+  createContactSapiensystem(
+    data: ContactSapiensystemInput!
+  ): ContactSapiensystemEntityResponse
+  updateContactSapiensystem(
+    id: ID!
+    data: ContactSapiensystemInput!
+  ): ContactSapiensystemEntityResponse
+  deleteContactSapiensystem(id: ID!): ContactSapiensystemEntityResponse
+  createDesignation(data: DesignationInput!): DesignationEntityResponse
+  updateDesignation(id: ID!, data: DesignationInput!): DesignationEntityResponse
+  deleteDesignation(id: ID!): DesignationEntityResponse
+  createEducationalDetail(
+    data: EducationalDetailInput!
+  ): EducationalDetailEntityResponse
+  updateEducationalDetail(
+    id: ID!
+    data: EducationalDetailInput!
+  ): EducationalDetailEntityResponse
+  deleteEducationalDetail(id: ID!): EducationalDetailEntityResponse
+  createEquipmentList(data: EquipmentListInput!): EquipmentListEntityResponse
+  updateEquipmentList(
+    id: ID!
+    data: EquipmentListInput!
+  ): EquipmentListEntityResponse
+  deleteEquipmentList(id: ID!): EquipmentListEntityResponse
+  createExercise(data: ExerciseInput!): ExerciseEntityResponse
+  updateExercise(id: ID!, data: ExerciseInput!): ExerciseEntityResponse
+  deleteExercise(id: ID!): ExerciseEntityResponse
+  createFaqsSapienlive(data: FaqsSapienliveInput!): FaqsSapienliveEntityResponse
+  updateFaqsSapienlive(
+    id: ID!
+    data: FaqsSapienliveInput!
+  ): FaqsSapienliveEntityResponse
+  deleteFaqsSapienlive(id: ID!): FaqsSapienliveEntityResponse
+  createFaqsSapiensystem(
+    data: FaqsSapiensystemInput!
+  ): FaqsSapiensystemEntityResponse
+  updateFaqsSapiensystem(
+    id: ID!
+    data: FaqsSapiensystemInput!
+  ): FaqsSapiensystemEntityResponse
+  deleteFaqsSapiensystem(id: ID!): FaqsSapiensystemEntityResponse
+  createFeedbackComment(
+    data: FeedbackCommentInput!
+  ): FeedbackCommentEntityResponse
+  updateFeedbackComment(
+    id: ID!
+    data: FeedbackCommentInput!
+  ): FeedbackCommentEntityResponse
+  deleteFeedbackComment(id: ID!): FeedbackCommentEntityResponse
+  createFeedbackNote(data: FeedbackNoteInput!): FeedbackNoteEntityResponse
+  updateFeedbackNote(
+    id: ID!
+    data: FeedbackNoteInput!
+  ): FeedbackNoteEntityResponse
+  deleteFeedbackNote(id: ID!): FeedbackNoteEntityResponse
+  createFitnessMode(data: FitnessModeInput!): FitnessModeEntityResponse
+  updateFitnessMode(id: ID!, data: FitnessModeInput!): FitnessModeEntityResponse
+  deleteFitnessMode(id: ID!): FitnessModeEntityResponse
+  createFitnessPackageType(
+    data: FitnessPackageTypeInput!
+  ): FitnessPackageTypeEntityResponse
+  updateFitnessPackageType(
+    id: ID!
+    data: FitnessPackageTypeInput!
+  ): FitnessPackageTypeEntityResponse
+  deleteFitnessPackageType(id: ID!): FitnessPackageTypeEntityResponse
+  createFitnessdiscipline(
+    data: FitnessdisciplineInput!
+  ): FitnessdisciplineEntityResponse
+  updateFitnessdiscipline(
+    id: ID!
+    data: FitnessdisciplineInput!
+  ): FitnessdisciplineEntityResponse
+  deleteFitnessdiscipline(id: ID!): FitnessdisciplineEntityResponse
+  createFitnesspackage(data: FitnesspackageInput!): FitnesspackageEntityResponse
+  updateFitnesspackage(
+    id: ID!
+    data: FitnesspackageInput!
+  ): FitnesspackageEntityResponse
+  deleteFitnesspackage(id: ID!): FitnesspackageEntityResponse
+  createFitnessprogram(data: FitnessprogramInput!): FitnessprogramEntityResponse
+  updateFitnessprogram(
+    id: ID!
+    data: FitnessprogramInput!
+  ): FitnessprogramEntityResponse
+  deleteFitnessprogram(id: ID!): FitnessprogramEntityResponse
+  createFitnesssProgramTemplate(
+    data: FitnesssProgramTemplateInput!
+  ): FitnesssProgramTemplateEntityResponse
+  updateFitnesssProgramTemplate(
+    id: ID!
+    data: FitnesssProgramTemplateInput!
+  ): FitnesssProgramTemplateEntityResponse
+  deleteFitnesssProgramTemplate(id: ID!): FitnesssProgramTemplateEntityResponse
+  createGoal(data: GoalInput!): GoalEntityResponse
+  updateGoal(id: ID!, data: GoalInput!): GoalEntityResponse
+  deleteGoal(id: ID!): GoalEntityResponse
+  createHowItWorks(data: HowItWorksInput!): HowItWorksEntityResponse
+  updateHowItWorks(id: ID!, data: HowItWorksInput!): HowItWorksEntityResponse
+  deleteHowItWorks(id: ID!): HowItWorksEntityResponse
+  createInformationbankmessage(
+    data: InformationbankmessageInput!
+  ): InformationbankmessageEntityResponse
+  updateInformationbankmessage(
+    id: ID!
+    data: InformationbankmessageInput!
+  ): InformationbankmessageEntityResponse
+  deleteInformationbankmessage(id: ID!): InformationbankmessageEntityResponse
+  createKnowledgebank(data: KnowledgebankInput!): KnowledgebankEntityResponse
+  updateKnowledgebank(
+    id: ID!
+    data: KnowledgebankInput!
+  ): KnowledgebankEntityResponse
+  deleteKnowledgebank(id: ID!): KnowledgebankEntityResponse
+  createLanguage(data: LanguageInput!): LanguageEntityResponse
+  updateLanguage(id: ID!, data: LanguageInput!): LanguageEntityResponse
+  deleteLanguage(id: ID!): LanguageEntityResponse
+  createLead(data: LeadInput!): LeadEntityResponse
+  updateLead(id: ID!, data: LeadInput!): LeadEntityResponse
+  deleteLead(id: ID!): LeadEntityResponse
+  createMuscleGroup(data: MuscleGroupInput!): MuscleGroupEntityResponse
+  updateMuscleGroup(id: ID!, data: MuscleGroupInput!): MuscleGroupEntityResponse
+  deleteMuscleGroup(id: ID!): MuscleGroupEntityResponse
+  createNotification(data: NotificationInput!): NotificationEntityResponse
+  updateNotification(
+    id: ID!
+    data: NotificationInput!
+  ): NotificationEntityResponse
+  deleteNotification(id: ID!): NotificationEntityResponse
+  createOrganization(data: OrganizationInput!): OrganizationEntityResponse
+  updateOrganization(
+    id: ID!
+    data: OrganizationInput!
+  ): OrganizationEntityResponse
+  deleteOrganization(id: ID!): OrganizationEntityResponse
+  createOrganizationType(
+    data: OrganizationTypeInput!
+  ): OrganizationTypeEntityResponse
+  updateOrganizationType(
+    id: ID!
+    data: OrganizationTypeInput!
+  ): OrganizationTypeEntityResponse
+  deleteOrganizationType(id: ID!): OrganizationTypeEntityResponse
+  createPrerecordedMessage(
+    data: PrerecordedMessageInput!
+  ): PrerecordedMessageEntityResponse
+  updatePrerecordedMessage(
+    id: ID!
+    data: PrerecordedMessageInput!
+  ): PrerecordedMessageEntityResponse
+  deletePrerecordedMessage(id: ID!): PrerecordedMessageEntityResponse
+  createPrerecordedtrigger(
+    data: PrerecordedtriggerInput!
+  ): PrerecordedtriggerEntityResponse
+  updatePrerecordedtrigger(
+    id: ID!
+    data: PrerecordedtriggerInput!
+  ): PrerecordedtriggerEntityResponse
+  deletePrerecordedtrigger(id: ID!): PrerecordedtriggerEntityResponse
+  createPrerecordedtype(
+    data: PrerecordedtypeInput!
+  ): PrerecordedtypeEntityResponse
+  updatePrerecordedtype(
+    id: ID!
+    data: PrerecordedtypeInput!
+  ): PrerecordedtypeEntityResponse
+  deletePrerecordedtype(id: ID!): PrerecordedtypeEntityResponse
+  createProgramManager(data: ProgramManagerInput!): ProgramManagerEntityResponse
+  updateProgramManager(
+    id: ID!
+    data: ProgramManagerInput!
+  ): ProgramManagerEntityResponse
+  deleteProgramManager(id: ID!): ProgramManagerEntityResponse
+  createRating(data: RatingInput!): RatingEntityResponse
+  updateRating(id: ID!, data: RatingInput!): RatingEntityResponse
+  deleteRating(id: ID!): RatingEntityResponse
+  createRatingScale(data: RatingScaleInput!): RatingScaleEntityResponse
+  updateRatingScale(id: ID!, data: RatingScaleInput!): RatingScaleEntityResponse
+  deleteRatingScale(id: ID!): RatingScaleEntityResponse
+  createSapienPricing(data: SapienPricingInput!): SapienPricingEntityResponse
+  updateSapienPricing(
+    id: ID!
+    data: SapienPricingInput!
+  ): SapienPricingEntityResponse
+  deleteSapienPricing(id: ID!): SapienPricingEntityResponse
+  createSuggestedPricing(
+    data: SuggestedPricingInput!
+  ): SuggestedPricingEntityResponse
+  updateSuggestedPricing(
+    id: ID!
+    data: SuggestedPricingInput!
+  ): SuggestedPricingEntityResponse
+  deleteSuggestedPricing(id: ID!): SuggestedPricingEntityResponse
+  createTimezone(data: TimezoneInput!): TimezoneEntityResponse
+  updateTimezone(id: ID!, data: TimezoneInput!): TimezoneEntityResponse
+  deleteTimezone(id: ID!): TimezoneEntityResponse
+  createUpiDetailsChangemaker(
+    data: UpiDetailsChangemakerInput!
+  ): UpiDetailsChangemakerEntityResponse
+  updateUpiDetailsChangemaker(
+    id: ID!
+    data: UpiDetailsChangemakerInput!
+  ): UpiDetailsChangemakerEntityResponse
+  deleteUpiDetailsChangemaker(id: ID!): UpiDetailsChangemakerEntityResponse
+  createUserGoal(data: UserGoalInput!): UserGoalEntityResponse
+  updateUserGoal(id: ID!, data: UserGoalInput!): UserGoalEntityResponse
+  deleteUserGoal(id: ID!): UserGoalEntityResponse
+  createUserPackageSuggestion(
+    data: UserPackageSuggestionInput!
+  ): UserPackageSuggestionEntityResponse
+  updateUserPackageSuggestion(
+    id: ID!
+    data: UserPackageSuggestionInput!
+  ): UserPackageSuggestionEntityResponse
+  deleteUserPackageSuggestion(id: ID!): UserPackageSuggestionEntityResponse
+  createVoucher(data: VoucherInput!): VoucherEntityResponse
+  updateVoucher(id: ID!, data: VoucherInput!): VoucherEntityResponse
+  deleteVoucher(id: ID!): VoucherEntityResponse
+  createWebsiteContactForm(
+    data: WebsiteContactFormInput!
+  ): WebsiteContactFormEntityResponse
+  updateWebsiteContactForm(
+    id: ID!
+    data: WebsiteContactFormInput!
+  ): WebsiteContactFormEntityResponse
+  deleteWebsiteContactForm(id: ID!): WebsiteContactFormEntityResponse
+  createWebsiteData(data: WebsiteDataInput!): WebsiteDataEntityResponse
+  updateWebsiteData(id: ID!, data: WebsiteDataInput!): WebsiteDataEntityResponse
+  deleteWebsiteData(id: ID!): WebsiteDataEntityResponse
+  createWebsiteTemplate(
+    data: WebsiteTemplateInput!
+  ): WebsiteTemplateEntityResponse
+  updateWebsiteTemplate(
+    id: ID!
+    data: WebsiteTemplateInput!
+  ): WebsiteTemplateEntityResponse
+  deleteWebsiteTemplate(id: ID!): WebsiteTemplateEntityResponse
+  createWorkout(data: WorkoutInput!): WorkoutEntityResponse
+  updateWorkout(id: ID!, data: WorkoutInput!): WorkoutEntityResponse
+  deleteWorkout(id: ID!): WorkoutEntityResponse
+  upload(
+    refId: ID
+    ref: String
+    field: String
+    info: FileInfoInput
+    file: Upload!
+  ): UploadFileEntityResponse!
+  multipleUpload(
+    refId: ID
+    ref: String
+    field: String
+    files: [Upload]!
+  ): [UploadFileEntityResponse]!
+  updateFileInfo(id: ID!, info: FileInfoInput): UploadFileEntityResponse!
+  removeFile(id: ID!): UploadFileEntityResponse
+
+  # Create a new role
+  createUsersPermissionsRole(
+    data: UsersPermissionsRoleInput!
+  ): UsersPermissionsCreateRolePayload
+
+  # Update an existing role
+  updateUsersPermissionsRole(
+    id: ID!
+    data: UsersPermissionsRoleInput!
+  ): UsersPermissionsUpdateRolePayload
+
+  # Delete an existing role
+  deleteUsersPermissionsRole(id: ID!): UsersPermissionsDeleteRolePayload
+
+  # Create a new user
+  createUsersPermissionsUser(
+    data: UsersPermissionsUserInput!
+  ): UsersPermissionsUserEntityResponse!
+
+  # Update an existing user
+  updateUsersPermissionsUser(
+    id: ID!
+    data: UsersPermissionsUserInput!
+  ): UsersPermissionsUserEntityResponse!
+
+  # Update an existing user
+  deleteUsersPermissionsUser(id: ID!): UsersPermissionsUserEntityResponse!
+  login(input: UsersPermissionsLoginInput!): UsersPermissionsLoginPayload!
+
+  # Register a user
+  register(input: UsersPermissionsRegisterInput!): UsersPermissionsLoginPayload!
+
+  # Request a reset password token
+  forgotPassword(email: String!): UsersPermissionsPasswordPayload
+
+  # Reset user password. Confirm with a code (resetToken from forgotPassword)
+  resetPassword(
+    password: String!
+    passwordConfirmation: String!
+    code: String!
+  ): UsersPermissionsLoginPayload
+
+  # Confirm an email users email address
+  emailConfirmation(confirmation: String!): UsersPermissionsLoginPayload
+}
