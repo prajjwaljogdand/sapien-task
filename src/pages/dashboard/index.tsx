@@ -32,7 +32,6 @@ export default function MainLobby() {
   const [leads, setLeads] = useState<Lead[]>([]);
   const [deleteLead, { loading, error }] = useMutation(DELETE_LEAD);
   const [metaData, setMetaData] = useState({});
-  const { refetch } = useQuery(GET_LEADS);
   const { addToast } = useToasts();
   const [modalShow, setModalShow] = useState<boolean>(false);
   const [editModalShow, setEditModalShow] = useState<boolean>(false);
@@ -40,7 +39,7 @@ export default function MainLobby() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
 
-  const { data } = useQuery(GET_LEADS2, {
+  const { data , refetch} = useQuery(GET_LEADS2, {
     variables: {
       pagination: {
         limit: 10,

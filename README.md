@@ -16,8 +16,4 @@ You will find a FAQs section when you clone the repo and run it locally
 
 
 
-
-
-
-
 Happy Coding!
