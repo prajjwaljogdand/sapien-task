@@ -5,7 +5,7 @@ import {
 
 export function UnauthenticatedNav() {
   return (
-    <Navbar fixed="top" bg="light" className="shadow-sm" expand="lg">
+    <Navbar style={{zIndex : "1"}} fixed="top" bg="light" className="shadow-sm" expand="lg">
       <Container fluid>
         <Navbar.Brand  href="/" className="text-muted">
           <strong>SAPIEN SYSTEMS</strong>

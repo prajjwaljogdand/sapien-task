@@ -1,5 +1,10 @@
 import { gql } from "@apollo/client";
 
+/**
+ * @returns list of leads data and meta information
+ * @dev returns a list of leads data and its meta information, filtered by not having null values in either Name or email, sorted by an empty array, and paginated with 20 leads per page
+ */
+
 export const GET_LEADS = gql`
   query {
     leads(
@@ -12,7 +17,6 @@ export const GET_LEADS = gql`
       data {
         id
         attributes {
-          # insert fields for the Lead type here
           Name
           email
           Source
@@ -35,6 +39,10 @@ export const GET_LEADS = gql`
   }
 `;
 
+/**
+ * @params $id
+ * @returns deleted id
+ */
 export const DELETE_LEAD = gql`
   mutation deleteLead($id: ID!) {
     deleteLead(id: $id) {
@@ -44,6 +52,11 @@ export const DELETE_LEAD = gql`
     }
   }
 `;
+
+/**
+ * @params $id
+ * @returns lead data of a lead with the given ID
+ */
 
 export const GET_LEAD_BY_ID = gql`
   query Lead($id: ID!) {
@@ -59,6 +72,29 @@ export const GET_LEAD_BY_ID = gql`
           Time
           Notes
           createdAt
+          updatedAt
+        }
+      }
+    }
+  }
+`;
+
+/**
+ * @params $id $data
+ * @returns updated lead data
+ */
+export const UPDATE_LEAD = gql`
+  mutation UpdateLead($id: ID!, $data: LeadInput!) {
+    updateLead(id: $id, data: $data) {
+      data {
+        attributes {
+          Name
+          email
+          Source
+          Status
+          date
+          Time
+          Notes
           updatedAt
         }
       }

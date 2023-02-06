@@ -5,8 +5,8 @@ import Container from "react-bootstrap/Container";
 import Modal from "react-bootstrap/Modal";
 import Row from "react-bootstrap/Row";
 import { useQuery } from "@apollo/client";
-import { GET_LEAD_BY_ID } from "./queries";
-import { flattenObj } from "../../components/utils/responseFlatten";
+import { GET_LEAD_BY_ID } from "../queries";
+import { flattenObj } from "../../../components/utils/responseFlatten";
 
 interface Lead {
   id: string;
@@ -40,7 +40,7 @@ const containerStyle = {
   padding: "0 1em"
 };
 
-function MydModalWithGrid(props) {
+const ViewModal = (props) => {
   const [id, setId] = useState<string>("");
   const [data, setData] = useState<Lead>({});
 
@@ -72,12 +72,12 @@ function MydModalWithGrid(props) {
           <div style={containerStyle}>
           <Row>
             <Col xs={6} md={6}>
-              {columnName.map((item) => (
-                <Row><span className="item">{item}</span></Row>
+              {columnName.map((item,index) => (
+                <Row key={index}><span className="item">{item}</span></Row>
               ))}
             </Col>
             <Col xs={6} md={6}>
-             {Object.values(data).map((value) =><Row className="justify-content-md-right"><span className="item">{value || "null"}</span> </Row>)}
+             {Object.values(data).map((value,index) =><Row key={index} className="justify-content-md-right"><span className="item">{value || "null"}</span> </Row>)}
             </Col>
           </Row>
           </div>
@@ -91,4 +91,4 @@ function MydModalWithGrid(props) {
   );
 }
 
-export default MydModalWithGrid;
+export default ViewModal;

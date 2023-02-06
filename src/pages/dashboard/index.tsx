@@ -1,16 +1,16 @@
-import React, { MouseEvent, ReactNode, useEffect, useState } from "react";
-import { Button, Container } from "react-bootstrap";
-import { DELETE_LEAD, GET_LEADS, GET_LEAD_BY_ID } from "./queries";
+import React, { useState } from "react";
+import { Container } from "react-bootstrap";
+import { DELETE_LEAD, GET_LEADS } from "./queries";
 import { useQuery, useMutation } from "@apollo/client";
 import { flattenObj } from "../../components/utils/responseFlatten";
 import "./style.css";
-import MydModalWithGrid from "./MydModalWithGrid";
-// import arrowDown from '../../assets/down.svg';
-// import arrowUp from '../../assets/up.svg';
-// import { Link } from 'react-router-dom';
+import ViewModal from "./components/ViewModal";
 import { Dropdown, Table } from "react-bootstrap";
 import { ThreeDotsVertical } from "react-bootstrap-icons";
 import { useToasts } from "react-toast-notifications";
+import EditModal from "./components/EditModal";
+import { Lead } from "./interface";
+import CustomToggle from "./components/CustomeToggle";
 
 const columnName = [
   "id",
@@ -26,53 +26,25 @@ const columnName = [
   "",
 ];
 
-const CustomToggle = React.forwardRef<
-  HTMLSpanElement,
-  { children: ReactNode; onClick: (event: MouseEvent<HTMLSpanElement>) => void }
->(({ children, onClick }, ref) => (
-  <span
-    ref={ref}
-    onClick={(e: MouseEvent<HTMLSpanElement>) => {
-      e.preventDefault();
-      onClick(e);
-    }}
-    className="kebab"
-  >
-    {children}
-  </span>
-));
-
-interface Lead {
-  id: string;
-  Name: string;
-  email: string;
-  Notes: string;
-  Source: string;
-  Status: string;
-  Time: string;
-  Date: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
-
 export default function MainLobby() {
   const [leads, setLeads] = useState<Lead[]>([]);
   const [deleteLead, { loading, error }] = useMutation(DELETE_LEAD);
   const { refetch } = useQuery(GET_LEADS);
   const { addToast } = useToasts();
   const [modalShow, setModalShow] = useState<boolean>(false);
+  const [editModalShow, setEditModalShow] = useState<boolean>(false);
   const [leadId, setLeadId] = useState<string>("");
 
   const FetchData = () => {
     useQuery(GET_LEADS, {
       onCompleted: (res) => {
-        let faqList = flattenObj(res.leads.data)
+        let data = flattenObj(res.leads.data)
           .map((a) => {
             a.id = Number(a.id);
             return a;
           })
           .sort((a, b) => a.id - b.id);
-        setLeads(faqList);
+        setLeads(data);
         console.log(leads);
       },
     });
@@ -89,24 +61,13 @@ export default function MainLobby() {
     }
   };
 
-  //   const handleView = async (id : string) => {
-  //     try {
-  //       await deleteLead({ variables: { id } });
-  //       addToast(`Lead successfully deleted ${id}`, { appearance: 'success' });
-  //       const t =  refetch();
-  //       console.log(await t);
-
-  //     } catch (err : any) {
-  //       addToast(err.message, { appearance: 'error' });
-  //     }
-  //   }
 
   FetchData();
 
   return (
-    <>
+    <div className="main-container">
       <Container fluid style={{ overflow: "hidden" }}>
-        <Table bordered hover variant="dark" striped responsive>
+        <Table bordered hover  striped responsive>
           <thead>
             <tr>
               {columnName.map((col) => (
@@ -125,7 +86,7 @@ export default function MainLobby() {
                   <td>{lead.Source}</td>
                   <td>{lead.Status}</td>
                   <td>{lead.Time}</td>
-                  <td>{lead.Date}</td>
+                  <td>{lead.date}</td>
                   <td>{lead.createdAt}</td>
                   <td>{lead.updatedAt}</td>
                   <td>
@@ -147,10 +108,20 @@ export default function MainLobby() {
                               setModalShow(true);
                             }}
                           >
-                           View
+                            View
                           </div>
                         </Dropdown.Item>
-                        <Dropdown.Item>Edit</Dropdown.Item>
+                        <Dropdown.Item>
+                          {" "}
+                          <div
+                            onClick={() => {
+                              setLeadId(lead.id);
+                              setEditModalShow(true);
+                            }}
+                          >
+                            Edit
+                          </div>
+                        </Dropdown.Item>
                         <Dropdown.Item
                           onClick={() => handleDelete(lead.id)}
                           disabled={loading}
@@ -167,13 +138,20 @@ export default function MainLobby() {
           </tbody>
         </Table>
         {modalShow ? (
-          <MydModalWithGrid
+          <ViewModal
             show={modalShow}
             onHide={() => setModalShow(false)}
             leadid={leadId}
           />
         ) : null}
+        {editModalShow ? (
+          <EditModal
+            show={editModalShow}
+            onHide={() => setEditModalShow(false)}
+            leadid={leadId}
+          />
+        ) : null}
       </Container>
-    </>
+    </div>
   );
 }
