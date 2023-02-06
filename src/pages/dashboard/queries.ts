@@ -101,3 +101,37 @@ export const UPDATE_LEAD = gql`
     }
   }
 `;
+
+
+export const GET_LEADS2 = gql`
+ query leads(
+    $pagination: PaginationArg
+    $sort: [String]
+  ) {
+    leads( filters: {
+        not: { or: [{ Name: { eq: null } }] }
+      }, pagination: $pagination, sort: $sort) {
+      data {
+        id
+        attributes {
+          Name
+          email
+          Source
+          Status
+          date
+          Time
+          Notes
+          createdAt
+          updatedAt
+        }
+      }
+      meta {
+        pagination {
+          total
+          pageSize
+          pageCount
+        }
+      }
+    }
+  }
+`;

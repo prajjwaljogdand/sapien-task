@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container } from "react-bootstrap";
-import { DELETE_LEAD, GET_LEADS } from "./queries";
+import { DELETE_LEAD, GET_LEADS, GET_LEADS2 } from "./queries";
 import { useQuery, useMutation } from "@apollo/client";
 import { flattenObj } from "../../components/utils/responseFlatten";
 import "./style.css";
@@ -11,9 +11,11 @@ import { useToasts } from "react-toast-notifications";
 import EditModal from "./components/EditModal";
 import { Lead } from "./interface";
 import CustomToggle from "./components/CustomeToggle";
+import Pagination from "react-bootstrap/Pagination";
+import { Row } from "react-bootstrap";
 
 const columnName = [
-  "id",
+  "Id",
   "Names",
   "Email",
   "Notes",
@@ -21,34 +23,68 @@ const columnName = [
   "Status",
   "Time",
   "Date",
-  "createdAt",
-  "updatedAt",
+  "CreatedAt",
+  "UpdatedAt",
   "",
 ];
 
 export default function MainLobby() {
   const [leads, setLeads] = useState<Lead[]>([]);
   const [deleteLead, { loading, error }] = useMutation(DELETE_LEAD);
+  const [metaData, setMetaData] = useState({});
   const { refetch } = useQuery(GET_LEADS);
   const { addToast } = useToasts();
   const [modalShow, setModalShow] = useState<boolean>(false);
   const [editModalShow, setEditModalShow] = useState<boolean>(false);
   const [leadId, setLeadId] = useState<string>("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
 
-  const FetchData = () => {
-    useQuery(GET_LEADS, {
-      onCompleted: (res) => {
-        let data = flattenObj(res.leads.data)
-          .map((a) => {
-            a.id = Number(a.id);
-            return a;
-          })
-          .sort((a, b) => a.id - b.id);
-        setLeads(data);
-        console.log(leads);
+  const { data } = useQuery(GET_LEADS2, {
+    variables: {
+      pagination: {
+        limit: 10,
+        start: (currentPage - 1) * 10,
       },
-    });
-  };
+      sort: [],
+    },
+    onCompleted: (res) => {
+      setTotalPages(res.leads.meta.pagination.pageCount);
+      let data = flattenObj(res.leads.data)
+        .map((a) => {
+          a.id = Number(a.id);
+          return a;
+        })
+        .sort((a, b) => a.id - b.id);
+      setLeads(data);
+      console.log(res);
+    },
+    onError: (err) => {
+      console.log(err);
+    },
+  });
+
+  function handlePageChange(e: any) {
+    console.log(e.target.text);
+    setCurrentPage(e.target.text);
+  }
+
+  //   const FetchData = () => {
+  //     useQuery(GET_LEADS, {
+  //       onCompleted: (res) => {
+  //         let data = flattenObj(res.leads.data)
+  //           .map((a) => {
+  //             a.id = Number(a.id);
+  //             return a;
+  //           })
+  //           .sort((a, b) => a.id - b.id);
+  //         setLeads(data);
+  //         let mData = res.leads.meta.pagination;
+  //         setMetaData(mData);
+  //         console.log(res.leads.meta.pagination);
+  //       },
+  //     });
+  //   };
 
   const handleDelete = async (id: string) => {
     try {
@@ -61,13 +97,12 @@ export default function MainLobby() {
     }
   };
 
-
-  FetchData();
+  //   FetchData();
 
   return (
     <div className="main-container">
       <Container fluid style={{ overflow: "hidden" }}>
-        <Table bordered hover  striped responsive>
+        <Table bordered hover striped responsive>
           <thead>
             <tr>
               {columnName.map((col) => (
@@ -152,6 +187,45 @@ export default function MainLobby() {
           />
         ) : null}
       </Container>
+      <Row className="justify-content-md-center">
+        <Pagination>
+          {currentPage > 1 ? (
+            <>
+              <Pagination.First onClick={() => setCurrentPage(1)} />
+              <Pagination.Prev
+                onClick={() => setCurrentPage(currentPage - 1)}
+              />
+            </>
+          ) : (
+            <>
+              <Pagination.First />
+              <Pagination.Prev />
+            </>
+          )}
+          {Array.from({ length: totalPages }, (_, i) => (
+            <Pagination.Item
+              key={i + 1}
+              active={i + 1 === currentPage}
+              onClick={handlePageChange}
+            >
+              {i + 1}
+            </Pagination.Item>
+          ))}
+          {currentPage < totalPages ? (
+            <>
+              <Pagination.Next
+                onClick={() => setCurrentPage(currentPage + 1)}
+              />
+              <Pagination.Last onClick={() => setCurrentPage(totalPages)} />
+            </>
+          ) : (
+            <>
+              <Pagination.Next />
+              <Pagination.Last />
+            </>
+          )}
+        </Pagination>
+      </Row>
     </div>
   );
 }
