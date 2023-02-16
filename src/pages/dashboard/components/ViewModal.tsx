@@ -7,19 +7,7 @@ import Row from "react-bootstrap/Row";
 import { useQuery } from "@apollo/client";
 import { GET_LEAD_BY_ID } from "../queries";
 import { flattenObj } from "../../../components/utils/responseFlatten";
-
-interface Lead {
-  id: string;
-  Name: string;
-  email: string;
-  Notes: string;
-  Source: string;
-  Status: string;
-  Time: string;
-  Date: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
+import { Lead } from "../interface";
 
 const columnName = [
   "Id",
@@ -40,9 +28,23 @@ const containerStyle = {
   padding: "0 1em"
 };
 
+const lead: Lead = {
+  id: "",
+  Name: "",
+  email: "",
+  Notes: "",
+  Source: "",
+  Status: "",
+  Time: "",
+  date: "",
+  createdAt: new Date(),
+  updatedAt: new Date(),
+};
+
+
 const ViewModal = (props) => {
   const [id, setId] = useState<string>("");
-  const [data, setData] = useState<Lead>({});
+  const [data, setData] = useState<Lead>(lead);
 
   const FetchData = () => {
     console.log(props.leadid);

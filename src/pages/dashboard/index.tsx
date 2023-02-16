@@ -13,6 +13,7 @@ import { Lead } from "./interface";
 import CustomToggle from "./components/CustomeToggle";
 import Pagination from "react-bootstrap/Pagination";
 import { Row } from "react-bootstrap";
+import SideBar from "../../components/layout/SideBar";
 
 const columnName = [
   "Id",
@@ -101,18 +102,19 @@ export default function MainLobby() {
   return (
     <div className="main-container">
       <Container fluid style={{ overflow: "hidden" }}>
+
         <Table bordered hover striped responsive>
           <thead>
             <tr>
-              {columnName.map((col) => (
-                <th> {col}</th>
+              {columnName.map((col,index) => (
+                <th key={index}> {col}</th>
               ))}
             </tr>
           </thead>
           <tbody>
-            {leads.map((lead) => {
+            {leads.map((lead,index) => {
               return (
-                <tr>
+                <tr key={index} >
                   <td>{lead.id}</td>
                   <td>{lead.Name}</td>
                   <td>{lead.email}</td>
